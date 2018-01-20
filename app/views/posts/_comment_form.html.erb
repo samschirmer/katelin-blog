@@ -1,0 +1,8 @@
+<%= simple_form_for @comment do |f| %>
+	<%= f.input :author, required: true %>
+	<%= f.input :email, as: :email, required: true %>
+	<%= f.input :body, required: true %>
+	<%= f.input :post_id, as: :hidden, required: true, input_html: { value: locals[:post_id] } %>
+	<%= f.button :submit %>
+<% end %>
+

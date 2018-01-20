@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>KatelinBlog</title>
-    <%= csrf_meta_tags %>
+	<head>
+		<%= render partial: 'layouts/head' %>
+	</head>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+	<body>
+		<div id="body_container">
+			<% flash.each do |key, value| %>
+				<div class="centered alert alert-<%= key %>">
+					<%= value %> <br />
+				</div>
+			<% end %>
 
-  <body>
-    <%= yield %>
-  </body>
+			<%= yield %>
+		</div>
+  	<%= render 'layouts/footer' %>
+	</body>
 </html>
