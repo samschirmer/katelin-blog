@@ -1,0 +1,1842 @@
+Started GET "/" for 127.0.0.1 at 2018-01-20 09:57:22 -0600
+Processing by Rails::WelcomeController#index as HTML
+  Parameters: {"internal"=>true}
+  Rendering /home/sam/.rvm/gems/ruby-2.3.0/gems/railties-5.0.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/sam/.rvm/gems/ruby-2.3.0/gems/railties-5.0.6/lib/rails/templates/rails/welcome/index.html.erb (4.0ms)
+Completed 200 OK in 21ms (Views: 9.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/index" for 127.0.0.1 at 2018-01-20 10:03:40 -0600
+Started GET "/posts" for 127.0.0.1 at 2018-01-20 10:03:50 -0600
+
+ActiveRecord::PendingMigrationError - Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+:
+
+
+ActiveRecord::PendingMigrationError - Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+:
+
+Started POST "/__better_errors/5ddc7ba08fbc1985/variables" for 127.0.0.1 at 2018-01-20 10:03:50 -0600
+Started GET "/posts" for 127.0.0.1 at 2018-01-20 10:03:52 -0600
+
+ActiveRecord::PendingMigrationError - Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+:
+
+Started POST "/__better_errors/9a8be8fbe706235e/variables" for 127.0.0.1 at 2018-01-20 10:03:52 -0600
+  [1m[35m (17.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (14.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreatePosts (20180120160226)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180120160226"]]
+  [1m[35m (26.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-01-20 16:04:06.292527"], ["updated_at", "2018-01-20 16:04:06.292527"]]
+  [1m[35m (15.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Started GET "/posts" for 127.0.0.1 at 2018-01-20 10:04:08 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (10.8ms)
+Completed 200 OK in 3326ms (Views: 3325.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2018-01-20 10:04:24 -0600
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (91.4ms)
+  Rendered posts/new.html.erb within layouts/application (93.5ms)
+Completed 200 OK in 124ms (Views: 116.1ms | ActiveRecord: 1.3ms)
+
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateComments (20180120160827)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "author" varchar, "email" varchar, "body" text, "post_id" integer, "approval" varchar, "deleted" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mselect sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_comments_on_post_id" ON "comments" ("post_id")[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180120160827"]]
+  [1m[35m (9.9ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddStatusToPost (20180120161156)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "posts" ADD "status" integer[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180120161156"]]
+  [1m[35m (6.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_post_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_post_id' AND type='index'
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddSlugToPosts (20180120162504)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "posts" ADD "slug" varchar[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180120162504"]]
+  [1m[35m (6.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_post_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_post_id' AND type='index'
+[0m
+Started GET "/posts" for 127.0.0.1 at 2018-01-20 10:26:43 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 31ms (Views: 29.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2018-01-20 10:26:44 -0600
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (3.2ms)
+  Rendered posts/new.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 40ms (Views: 26.4ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2018-01-20 10:26:57 -0600
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qfqnkSQ/M7g9wUz3p+F2MXBw6qZqsarmjWFYUqVo87XJokjkvjldoZFpXO80pvn3PSyn0G3voyMR44++gYaxyA==", "post"=>{"title"=>"testing the title", "body"=>"this is some content. lets see if this slug works. "}, "commit"=>"Create Post"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?)[0m  [["title", "testing the title"], ["body", "this is some content. lets see if this slug works. "], ["created_at", "2018-01-20 16:26:57.340244"], ["updated_at", "2018-01-20 16:26:57.340244"], ["slug", "testing-the-title"]]
+  [1m[35m (6.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/posts/1-testing-the-title
+Completed 302 Found in 110ms (ActiveRecord: 6.9ms)
+
+
+Started GET "/posts/1-testing-the-title" for 127.0.0.1 at 2018-01-20 10:26:57 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1-testing-the-title"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 30ms (Views: 24.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1-testing-the-title/edit" for 127.0.0.1 at 2018-01-20 10:27:46 -0600
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"1-testing-the-title"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/edit.html.erb within layouts/application
+  Rendered posts/_form.html.erb (4.2ms)
+  Rendered posts/edit.html.erb within layouts/application (6.3ms)
+Completed 200 OK in 36ms (Views: 32.5ms | ActiveRecord: 0.2ms)
+
+
+Started PATCH "/posts/1-testing-the-title" for 127.0.0.1 at 2018-01-20 10:27:50 -0600
+Processing by PostsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"idIEgTSs+6YDU9klDYX97gbe7+NQXJGsUdrydn8rE53piuv0rqqVv6/7yT2ewnIoS4KilVcCmGnNWCWaW8VR4A==", "post"=>{"title"=>"Testing the title", "body"=>"this is some content. lets see if this slug works. "}, "commit"=>"Update Post", "id"=>"1-testing-the-title"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "posts" SET "title" = ?, "updated_at" = ? WHERE "posts"."id" = ?[0m  [["title", "Testing the title"], ["updated_at", "2018-01-20 16:27:50.396576"], ["id", 1]]
+  [1m[35m (6.4ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/posts/1-testing-the-title
+Completed 302 Found in 26ms (ActiveRecord: 6.9ms)
+
+
+Started GET "/posts/1-testing-the-title" for 127.0.0.1 at 2018-01-20 10:27:50 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1-testing-the-title"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 29ms (Views: 26.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/posts/1-testing-the-title" for 127.0.0.1 at 2018-01-20 10:27:53 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1-testing-the-title"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 30ms (Views: 27.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-01-20 10:28:04 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 40ms (Views: 39.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2018-01-20 10:28:05 -0600
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (2.2ms)
+  Rendered posts/new.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 34ms (Views: 32.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2018-01-20 10:28:13 -0600
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5YfHWMty18AGLeStXgfejZ3hUv+a2ROmkuYIg9m+cEmF3ygtUXS52aqF9LXNQFFL0L0fiZ2HGmMOZN9v/VAyNA==", "post"=>{"title"=>"Ca[ps Check", "body"=>"lijaslkd jlajd 9 8"}, "commit"=>"Create Post"}
+  [1m[35m (0.4ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Ca[ps Check"], ["body", "lijaslkd jlajd 9 8"], ["created_at", "2018-01-20 16:28:13.155806"], ["updated_at", "2018-01-20 16:28:13.155806"], ["slug", "ca-ps-check"]]
+  [1m[35m (6.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/posts/2-ca-ps-check
+Completed 302 Found in 26ms (ActiveRecord: 6.9ms)
+
+
+Started GET "/posts/2-ca-ps-check" for 127.0.0.1 at 2018-01-20 10:28:13 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"2-ca-ps-check"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 30ms (Views: 26.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/posts/2-ca-ps-check/edit" for 127.0.0.1 at 2018-01-20 10:28:24 -0600
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"2-ca-ps-check"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering posts/edit.html.erb within layouts/application
+  Rendered posts/_form.html.erb (3.9ms)
+  Rendered posts/edit.html.erb within layouts/application (7.3ms)
+Completed 200 OK in 39ms (Views: 36.4ms | ActiveRecord: 0.2ms)
+
+
+Started PATCH "/posts/2-ca-ps-check" for 127.0.0.1 at 2018-01-20 10:28:29 -0600
+Processing by PostsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lDAVKkBuSA4Oxii5mmXOwaC5qbf+CHsIRl8ySRqll9H0aPpf2mgmF6JuOKEJIkEH7eXkwflWcs3a3eWlPkvVrA==", "post"=>{"title"=>"Capitalization", "body"=>"lijaslkd jlajd 9 8"}, "commit"=>"Update Post", "id"=>"2-ca-ps-check"}
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[33mUPDATE "posts" SET "title" = ?, "updated_at" = ? WHERE "posts"."id" = ?[0m  [["title", "Capitalization"], ["updated_at", "2018-01-20 16:28:29.735765"], ["id", 2]]
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/posts/2-capitalization
+Completed 302 Found in 27ms (ActiveRecord: 6.9ms)
+
+
+Started GET "/posts/2-capitalization" for 127.0.0.1 at 2018-01-20 10:28:29 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"2-capitalization"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 24ms (Views: 21.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-01-20 10:28:32 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 34ms (Views: 32.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/2-capitalization" for 127.0.0.1 at 2018-01-20 10:28:36 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"2-capitalization"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 36ms (Views: 32.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2018-01-20 10:35:06 -0600
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (2.9ms)
+  Rendered posts/new.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 32ms (Views: 30.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2018-01-20 10:35:07 -0600
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"WfOWXMmHdYYL//4Sp3rtPeFQefKlyBz7CyNDIix6GKc5q3kpU4Ebn6dX7go0PWL7rAw0hKKWFT6XoZTOCJRa2g==", "post"=>{"title"=>"", "body"=>""}, "commit"=>"Create Post"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?)[0m  [["title", ""], ["body", ""], ["created_at", "2018-01-20 16:35:07.082845"], ["updated_at", "2018-01-20 16:35:07.082845"], ["slug", ""]]
+  [1m[35m (8.3ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/posts/3-
+Completed 302 Found in 23ms (ActiveRecord: 9.5ms)
+
+
+Started GET "/posts/3-" for 127.0.0.1 at 2018-01-20 10:35:07 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3-"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 29ms (Views: 25.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/3-/edit" for 127.0.0.1 at 2018-01-20 10:35:09 -0600
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"3-"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering posts/edit.html.erb within layouts/application
+  Rendered posts/_form.html.erb (2.9ms)
+  Rendered posts/edit.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 35ms (Views: 32.9ms | ActiveRecord: 0.1ms)
+
+
+Started PATCH "/posts/3-" for 127.0.0.1 at 2018-01-20 10:35:18 -0600
+Processing by PostsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"N5OUhNVFpSA9QqNA/yb/zSWAN8dUTYm00ilvmiL9NEFXy3vxT0PLOZHqs1hsYXALaNx6sVMTgHFOq7h2BhN2PA==", "post"=>{"title"=>"null check", "body"=>"nope that worked"}, "commit"=>"Update Post", "id"=>"3-"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "posts" SET "title" = ?, "body" = ?, "updated_at" = ? WHERE "posts"."id" = ?[0m  [["title", "null check"], ["body", "nope that worked"], ["updated_at", "2018-01-20 16:35:18.634749"], ["id", 3]]
+  [1m[35m (8.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/posts/3-null-check
+Completed 302 Found in 27ms (ActiveRecord: 8.9ms)
+
+
+Started GET "/posts/3-null-check" for 127.0.0.1 at 2018-01-20 10:35:18 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3-null-check"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 30ms (Views: 27.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-01-20 10:35:20 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (6.2ms)
+Completed 200 OK in 34ms (Views: 33.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2018-01-20 10:37:24 -0600
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (1.2ms)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.0ms)
+
+
+
+SyntaxError - syntax error, unexpected tCONSTANT, expecting ')'
+...t_buffer.append=( link_to 'Back', posts_path );@output_buffe...
+...                               ^
+/home/sam/Projects/ruby/rails/katelin_blog/app/views/posts/new.html.erb:12: unterminated string meets end of file
+/home/sam/Projects/ruby/rails/katelin_blog/app/views/posts/new.html.erb:12: syntax error, unexpected end-of-input, expecting ')':
+  app/views/posts/new.html.erb:11:in `'
+  app/views/posts/new.html.erb:11:in `'
+  app/views/posts/new.html.erb:12:in `'
+  app/views/posts/new.html.erb:12:in `'
+
+Started POST "/__better_errors/047d5488ea53b9ed/variables" for 127.0.0.1 at 2018-01-20 10:37:24 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_post_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_post_id' AND type='index'
+[0m
+Started GET "/posts/new" for 127.0.0.1 at 2018-01-20 10:38:28 -0600
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (1.1ms)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.7ms)
+
+
+
+SyntaxError - syntax error, unexpected tCONSTANT, expecting ')'
+...t_buffer.append=( link_to 'Back', posts_path );@output_buffe...
+...                               ^
+/home/sam/Projects/ruby/rails/katelin_blog/app/views/posts/new.html.erb:12: unterminated string meets end of file
+/home/sam/Projects/ruby/rails/katelin_blog/app/views/posts/new.html.erb:12: syntax error, unexpected end-of-input, expecting ')':
+  app/views/posts/new.html.erb:11:in `'
+  app/views/posts/new.html.erb:11:in `'
+  app/views/posts/new.html.erb:12:in `'
+  app/views/posts/new.html.erb:12:in `'
+
+Started POST "/__better_errors/a604be00f25894ee/variables" for 127.0.0.1 at 2018-01-20 10:38:28 -0600
+Started GET "/posts/new" for 127.0.0.1 at 2018-01-20 10:39:12 -0600
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (0.7ms)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms)
+
+
+
+SyntaxError - syntax error, unexpected tCONSTANT, expecting ')'
+..._buffer.append=( #link_to 'Back', posts_path );@output_buffe...
+...                               ^
+/home/sam/Projects/ruby/rails/katelin_blog/app/views/posts/new.html.erb:12: unterminated string meets end of file
+/home/sam/Projects/ruby/rails/katelin_blog/app/views/posts/new.html.erb:12: syntax error, unexpected end-of-input, expecting ')':
+  app/views/posts/new.html.erb:11:in `'
+  app/views/posts/new.html.erb:11:in `'
+  app/views/posts/new.html.erb:12:in `'
+  app/views/posts/new.html.erb:12:in `'
+
+Started POST "/__better_errors/818c8a0aa5cf2059/variables" for 127.0.0.1 at 2018-01-20 10:39:13 -0600
+Started GET "/posts/new" for 127.0.0.1 at 2018-01-20 10:39:15 -0600
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (0.7ms)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms)
+
+
+
+SyntaxError - syntax error, unexpected tCONSTANT, expecting ')'
+..._buffer.append=( #link_to 'Back', posts_path );@output_buffe...
+...                               ^
+/home/sam/Projects/ruby/rails/katelin_blog/app/views/posts/new.html.erb:12: unterminated string meets end of file
+/home/sam/Projects/ruby/rails/katelin_blog/app/views/posts/new.html.erb:12: syntax error, unexpected end-of-input, expecting ')':
+  app/views/posts/new.html.erb:11:in `'
+  app/views/posts/new.html.erb:11:in `'
+  app/views/posts/new.html.erb:12:in `'
+  app/views/posts/new.html.erb:12:in `'
+
+Started POST "/__better_errors/ea377b4d85d38568/variables" for 127.0.0.1 at 2018-01-20 10:39:15 -0600
+Started GET "/posts/new" for 127.0.0.1 at 2018-01-20 10:39:26 -0600
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (32.1ms)
+Completed 200 OK in 55ms (Views: 54.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2018-01-20 10:39:29 -0600
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 45ms (Views: 43.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2018-01-20 10:39:35 -0600
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HK9yA0JuDdKq8CePhjfY76Qlq+IELBzAGlGW47geRN1895122GhjywZYN5cVcFcp6XnmlANyFQWG00EPnPAGoA==", "post"=>{"title"=>"", "body"=>""}, "commit"=>"Create Post"}
+  [1m[35m (0.4ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?)[0m  [["title", ""], ["body", ""], ["created_at", "2018-01-20 16:39:35.506427"], ["updated_at", "2018-01-20 16:39:35.506427"], ["slug", ""]]
+  [1m[35m (7.5ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/posts/4-
+Completed 302 Found in 25ms (ActiveRecord: 8.1ms)
+
+
+Started GET "/posts/4-" for 127.0.0.1 at 2018-01-20 10:39:35 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4-"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 37ms (Views: 32.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/posts/4-/edit" for 127.0.0.1 at 2018-01-20 10:39:38 -0600
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"4-"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering posts/edit.html.erb within layouts/application
+  Rendered posts/_form.html.erb (3.5ms)
+  Rendered posts/edit.html.erb within layouts/application (6.5ms)
+Completed 200 OK in 43ms (Views: 39.9ms | ActiveRecord: 0.3ms)
+
+
+Started PATCH "/posts/4-" for 127.0.0.1 at 2018-01-20 10:39:47 -0600
+Processing by PostsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rvfoIRSxHFOb/EbxsJ37TONtmVR5uh8DG/zVfr3r7WXOrwdUjrdySjdUVukj2nSKrjHUIn7kFsaHfgKSmQWvGA==", "post"=>{"title"=>"kjhkjh", "body"=>"kjhasd"}, "commit"=>"Update Post", "id"=>"4-"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[33mUPDATE "posts" SET "title" = ?, "body" = ?, "updated_at" = ? WHERE "posts"."id" = ?[0m  [["title", "kjhkjh"], ["body", "kjhasd"], ["updated_at", "2018-01-20 16:39:47.812909"], ["id", 4]]
+  [1m[35m (59.5ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/posts/4-kjhkjh
+Completed 302 Found in 82ms (ActiveRecord: 61.4ms)
+
+
+Started GET "/posts/4-kjhkjh" for 127.0.0.1 at 2018-01-20 10:39:47 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4-kjhkjh"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 55ms (Views: 51.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-01-20 10:40:33 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 42ms (Views: 40.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2018-01-20 10:40:34 -0600
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (8.8ms)
+  Rendered posts/new.html.erb within layouts/application (11.3ms)
+Completed 200 OK in 51ms (Views: 49.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2018-01-20 10:40:42 -0600
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Eu4SnYaou0ET2jhnjpM9fKpqhey8jerqVgZ1gBu3GSZytv3oHK7VWL9yKH8d1LK65zbImrvT4y/KhKJsP1lbWw==", "post"=>{"title"=>"simpleform check", "body"=>"test test test "}, "commit"=>"Create Post"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?)[0m  [["title", "simpleform check"], ["body", "test test test "], ["created_at", "2018-01-20 16:40:42.713152"], ["updated_at", "2018-01-20 16:40:42.713152"], ["slug", "simpleform-check"]]
+  [1m[35m (7.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/posts/5-simpleform-check
+Completed 302 Found in 29ms (ActiveRecord: 8.8ms)
+
+
+Started GET "/posts/5-simpleform-check" for 127.0.0.1 at 2018-01-20 10:40:42 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5-simpleform-check"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 42ms (Views: 39.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/5-simpleform-check/edit" for 127.0.0.1 at 2018-01-20 10:40:45 -0600
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"5-simpleform-check"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering posts/edit.html.erb within layouts/application
+  Rendered posts/_form.html.erb (11.0ms)
+  Rendered posts/edit.html.erb within layouts/application (13.3ms)
+Completed 200 OK in 52ms (Views: 48.7ms | ActiveRecord: 0.2ms)
+
+
+Started PATCH "/posts/5-simpleform-check" for 127.0.0.1 at 2018-01-20 10:40:49 -0600
+Processing by PostsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9ejCmINA6w/4QP2Oow5lYAov18kW5zykarPYrpyvaeyVsC3tGUaFFlTo7ZYwSeqmR3OavxG5NWH2MQ9CuEErkQ==", "post"=>{"title"=>"simpleform check", "body"=>"test sd test "}, "commit"=>"Update Post", "id"=>"5-simpleform-check"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[33mUPDATE "posts" SET "body" = ?, "updated_at" = ? WHERE "posts"."id" = ?[0m  [["body", "test sd test "], ["updated_at", "2018-01-20 16:40:49.299738"], ["id", 5]]
+  [1m[35m (6.4ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/posts/5-simpleform-check
+Completed 302 Found in 25ms (ActiveRecord: 7.7ms)
+
+
+Started GET "/posts/5-simpleform-check" for 127.0.0.1 at 2018-01-20 10:40:49 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5-simpleform-check"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 39ms (Views: 35.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-01-20 10:40:50 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 40ms (Views: 38.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-01-20 10:43:01 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 35ms (Views: 34.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/1-testing-the-title" for 127.0.0.1 at 2018-01-20 10:43:04 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1-testing-the-title"}
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/_comment_form.html.erb (3.0ms)
+  Rendered posts/show.html.erb within layouts/application (8.6ms)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.7ms)
+
+
+
+NoMethodError - undefined method `model_name' for nil:NilClass:
+  app/views/posts/_comment_form.html.erb:1:in `_app_views_posts__comment_form_html_erb___1985785866217641134_69873549561940'
+  app/views/posts/show.html.erb:15:in `_app_views_posts_show_html_erb___2727501386879284471_69873496414020'
+
+Started POST "/__better_errors/1059cc1dd06175eb/variables" for 127.0.0.1 at 2018-01-20 10:43:04 -0600
+Started GET "/posts/1-testing-the-title" for 127.0.0.1 at 2018-01-20 10:48:39 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1-testing-the-title"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/_comment_form.html.erb (7.3ms)
+  Rendered posts/show.html.erb within layouts/application (8.8ms)
+Completed 200 OK in 58ms (Views: 31.1ms | ActiveRecord: 1.8ms)
+
+
+Started POST "/comments" for 127.0.0.1 at 2018-01-20 10:48:57 -0600
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Ce68sJTrYRykF3bvpKrU5yul9sTzwYf0Pej4DnNmI9pptlPFDu0PBQi/Zvc37VshZvm7svSfjjGhai/iV4hhpw==", "comment"=>{"author"=>"Sam", "email"=>"sschirmer@hatchbuck.com", "body"=>"this is a comment. hahaha. hohoho. "}, "commit"=>"Create Comment"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Redirected to http://localhost:3000/posts
+Completed 302 Found in 12ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-01-20 10:48:57 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 30ms (Views: 28.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-01-20 10:49:08 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 29ms (Views: 28.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/posts/1-testing-the-title" for 127.0.0.1 at 2018-01-20 10:49:10 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1-testing-the-title"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/_comment_form.html.erb (5.6ms)
+  Rendered posts/show.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 40ms (Views: 37.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/posts/1-testing-the-title/edit" for 127.0.0.1 at 2018-01-20 10:49:13 -0600
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"1-testing-the-title"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/edit.html.erb within layouts/application
+  Rendered posts/_form.html.erb (5.3ms)
+  Rendered posts/edit.html.erb within layouts/application (7.4ms)
+Completed 200 OK in 35ms (Views: 32.9ms | ActiveRecord: 0.1ms)
+
+
+Started PATCH "/posts/1-testing-the-title" for 127.0.0.1 at 2018-01-20 10:49:18 -0600
+Processing by PostsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rAeKXb1pXwh58jGanz29kNRXQ0Y/4UjRhXquDBp1CYTMX2UoJ28xEdVaIYIMejJWmQsOMDi/QRQZ+HngPptL+Q==", "post"=>{"title"=>"has a comment", "body"=>"this is some content. lets see if this slug works. "}, "commit"=>"Update Post", "id"=>"1-testing-the-title"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "posts" SET "title" = ?, "updated_at" = ? WHERE "posts"."id" = ?[0m  [["title", "has a comment"], ["updated_at", "2018-01-20 16:49:18.036388"], ["id", 1]]
+  [1m[35m (5.9ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/posts/1-has-a-comment
+Completed 302 Found in 22ms (ActiveRecord: 6.4ms)
+
+
+Started GET "/posts/1-has-a-comment" for 127.0.0.1 at 2018-01-20 10:49:18 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1-has-a-comment"}
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/_comment_form.html.erb (18.6ms)
+  Rendered posts/show.html.erb within layouts/application (20.5ms)
+Completed 200 OK in 51ms (Views: 45.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/posts/1-has-a-comment" for 127.0.0.1 at 2018-01-20 10:51:00 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1-has-a-comment"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/_comment_form.html.erb (8.2ms)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered posts/show.html.erb within layouts/application (11.9ms)
+Completed 200 OK in 60ms (Views: 39.0ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/comments" for 127.0.0.1 at 2018-01-20 10:52:10 -0600
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Z1P1Q5mAZ9DEEw1cY8uzwIqp3DGvfq21QxSWGdMaFgMHCxo2A4YJyWi7HUTwjDwGx/WRR6ggpHDflkH19/RUfg==", "comment"=>{"author"=>"sam", "email"=>"whatever@email.com", "body"=>"this is a comment body"}, "commit"=>"Create Comment"}
+  [1m[35m (0.6ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+Redirected to http://localhost:3000/posts
+Completed 302 Found in 8ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-01-20 10:52:10 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 37ms (Views: 35.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-01-20 11:01:05 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (11.0ms)
+  Rendered layouts/_head.html.erb (18.4ms)
+Completed 500 Internal Server Error in 47ms (ActiveRecord: 0.8ms)
+
+
+
+ActionView::MissingTemplate - Missing partial layouts/_footer with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :arb, :coffee, :jbuilder]}. Searched in:
+  * "/home/sam/Projects/ruby/rails/katelin_blog/app/views"
+  * "/home/sam/.rvm/gems/ruby-2.3.0/bundler/gems/activeadmin-7f38dd557052/app/views"
+  * "/home/sam/.rvm/gems/ruby-2.3.0/gems/kaminari-core-1.1.1/app/views"
+  * "/home/sam/.rvm/gems/ruby-2.3.0/gems/devise_invitable-1.7.2/app/views"
+  * "/home/sam/.rvm/gems/ruby-2.3.0/gems/devise-4.2.0/app/views"
+:
+  app/views/layouts/application.html.erb:20:in `_app_views_layouts_application_html_erb__2977449390749828424_69873496088900'
+
+Started POST "/__better_errors/efc6ea81d320375b/variables" for 127.0.0.1 at 2018-01-20 11:01:05 -0600
+Started GET "/posts" for 127.0.0.1 at 2018-01-20 11:01:16 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (4.1ms)
+  Rendered layouts/_head.html.erb (24.8ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 48ms (Views: 47.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1-has-a-comment" for 127.0.0.1 at 2018-01-20 11:01:22 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1-has-a-comment"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/_comment_form.html.erb (7.9ms)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered posts/show.html.erb within layouts/application (10.7ms)
+  Rendered layouts/_head.html.erb (17.1ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 58ms (Views: 39.3ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-01-20 11:01:24 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (5.5ms)
+  Rendered layouts/_head.html.erb (24.7ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 48ms (Views: 46.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/4-kjhkjh" for 127.0.0.1 at 2018-01-20 11:01:26 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4-kjhkjh"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/_comment_form.html.erb (5.9ms)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 4]]
+  Rendered posts/show.html.erb within layouts/application (9.0ms)
+  Rendered layouts/_head.html.erb (23.7ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 56ms (Views: 50.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/1-has-a-comment" for 127.0.0.1 at 2018-01-20 11:01:33 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1-has-a-comment"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/_comment_form.html.erb (6.1ms)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered posts/show.html.erb within layouts/application (9.0ms)
+  Rendered layouts/_head.html.erb (19.8ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 51ms (Views: 46.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/1-has-a-comment" for 127.0.0.1 at 2018-01-20 11:02:05 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1-has-a-comment"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/_comment_form.html.erb (6.6ms)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered posts/show.html.erb within layouts/application (9.3ms)
+  Rendered layouts/_head.html.erb (21.8ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 42ms (Views: 38.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1-has-a-comment" for 127.0.0.1 at 2018-01-20 11:03:39 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1-has-a-comment"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/_comment_form.html.erb (7.6ms)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered posts/show.html.erb within layouts/application (10.7ms)
+  Rendered layouts/_head.html.erb (20.3ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 41ms (Views: 38.0ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/comments" for 127.0.0.1 at 2018-01-20 11:03:51 -0600
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Z4eRkOlRjXYFeAQ74Xo6V8yow+u9rTMkeQEfCTrimwIH337lc1fjb6nQFCNyPbWRgfSOnbrzOuHlg8jlHgzZfw==", "comment"=>{"author"=>"sam", "email"=>"email@email.com", "body"=>"ljsadlkjaslkd sa"}, "commit"=>"Create Comment"}
+  [1m[35m (0.4ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Redirected to http://localhost:3000/posts
+Completed 302 Found in 6ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-01-20 11:03:51 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (6.5ms)
+  Rendered layouts/_head.html.erb (20.9ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 37ms (Views: 35.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-01-20 11:08:14 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (14.4ms)
+  Rendered layouts/_head.html.erb (19.5ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 44ms (Views: 41.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/posts/1-has-a-comment" for 127.0.0.1 at 2018-01-20 11:08:16 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1-has-a-comment"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/_comment_form.html.erb (8.5ms)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered posts/show.html.erb within layouts/application (11.5ms)
+  Rendered layouts/_head.html.erb (18.0ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 58ms (Views: 37.6ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/comments" for 127.0.0.1 at 2018-01-20 11:08:23 -0600
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"goozlT0BbuCJKJYKB1g02Oz6zjMU4t1SFfs50iS+pbzi0tzgpwcA+SWAhhKUH7seoaaDRRO81JeJee4+AFDnwQ==", "comment"=>{"author"=>"sam", "email"=>"lkjlkAJ@LKJLKJ.COM", "body"=>"HASKD"}, "commit"=>"Create Comment"}
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+No template found for CommentsController#create, rendering head :no_content
+Completed 204 No Content in 92ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/1-has-a-comment" for 127.0.0.1 at 2018-01-20 11:08:48 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1-has-a-comment"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/_comment_form.html.erb (7.5ms)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered posts/show.html.erb within layouts/application (10.5ms)
+  Rendered layouts/_head.html.erb (21.5ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 42ms (Views: 39.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/posts/1-has-a-comment" for 127.0.0.1 at 2018-01-20 11:11:20 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1-has-a-comment"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/_comment_form.html.erb (6.4ms)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered posts/show.html.erb within layouts/application (11.0ms)
+  Rendered layouts/_head.html.erb (21.9ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 64ms (Views: 40.2ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/posts/1-has-a-comment" for 127.0.0.1 at 2018-01-20 11:11:46 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1-has-a-comment"}
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/_comment_form.html.erb (6.0ms)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered posts/show.html.erb within layouts/application (10.2ms)
+  Rendered layouts/_head.html.erb (21.5ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 44ms (Views: 38.9ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/posts/1-has-a-comment" for 127.0.0.1 at 2018-01-20 11:23:30 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1-has-a-comment"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/_comment_form.html.erb (9.6ms)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered posts/show.html.erb within layouts/application (12.9ms)
+  Rendered layouts/_head.html.erb (21.5ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 45ms (Views: 42.6ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/comments" for 127.0.0.1 at 2018-01-20 11:23:51 -0600
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Oemad1IjZmIZqftvs3VKkinNbbLszIdYZ2uCzpFpVANZsXUCyCUIe7UB63cgMsVUZJEgxOuSjp376VUitYcWfg==", "comment"=>{"author"=>"sam", "email"=>"samschirmer@gmail.com", "body"=>"so insightful", "post_id"=>"1"}, "commit"=>"Create Comment"}
+Unpermitted parameter: post_id
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+No template found for CommentsController#create, rendering head :no_content
+Completed 204 No Content in 93ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/1-has-a-comment" for 127.0.0.1 at 2018-01-20 11:24:06 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1-has-a-comment"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/_comment_form.html.erb (6.5ms)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered posts/show.html.erb within layouts/application (10.0ms)
+  Rendered layouts/_head.html.erb (35.3ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 56ms (Views: 52.5ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/comments" for 127.0.0.1 at 2018-01-20 11:24:42 -0600
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"FHM7tt38V7053rn6KSQsOGuHzob9ttnXV2iiwV6MSZZ0K9TDR/o5pJV2qeK6Y6P+JtuD8Pro0BLL6nUtemIL6w==", "comment"=>{"author"=>"sam", "email"=>"samschirmer@gmail.com", "body"=>"so insightful", "post_id"=>"1"}, "commit"=>"Create Comment"}
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("author", "email", "body", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["author", "sam"], ["email", "samschirmer@gmail.com"], ["body", "so insightful"], ["post_id", 1], ["created_at", "2018-01-20 17:24:42.962376"], ["updated_at", "2018-01-20 17:24:42.962376"]]
+  [1m[35m (3.9ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/posts
+Completed 302 Found in 39ms (ActiveRecord: 6.3ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-01-20 11:24:42 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (3.8ms)
+  Rendered layouts/_head.html.erb (21.2ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 33ms (Views: 32.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/posts/1-has-a-comment" for 127.0.0.1 at 2018-01-20 11:24:45 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1-has-a-comment"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/_comment_form.html.erb (9.7ms)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered posts/show.html.erb within layouts/application (13.2ms)
+  Rendered layouts/_head.html.erb (20.6ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 48ms (Views: 41.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/posts/1-has-a-comment" for 127.0.0.1 at 2018-01-20 11:26:47 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1-has-a-comment"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/_comment_form.html.erb (9.7ms)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered posts/show.html.erb within layouts/application (14.2ms)
+  Rendered layouts/_head.html.erb (20.1ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 44ms (Views: 41.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/1-has-a-comment" for 127.0.0.1 at 2018-01-20 11:27:06 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1-has-a-comment"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/_comment_form.html.erb (8.8ms)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered posts/show.html.erb within layouts/application (12.3ms)
+  Rendered layouts/_head.html.erb (20.5ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 42ms (Views: 39.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/posts/1-has-a-comment" for 127.0.0.1 at 2018-01-20 11:27:30 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1-has-a-comment"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/_comment_form.html.erb (9.6ms)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered posts/show.html.erb within layouts/application (13.5ms)
+  Rendered layouts/_head.html.erb (21.3ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 45ms (Views: 42.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/1-has-a-comment" for 127.0.0.1 at 2018-01-20 11:28:54 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1-has-a-comment"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/_comment_form.html.erb (9.4ms)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered posts/show.html.erb within layouts/application (12.6ms)
+  Rendered layouts/_head.html.erb (31.8ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 57ms (Views: 53.6ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/comments" for 127.0.0.1 at 2018-01-20 11:29:15 -0600
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"pq05o9zhVsdpqPnubf6/ESGI/C60ISWqvwo4QDDXSI3G9dbWRuc43sUA6fb+uTDXbNSxWLN/LG8jiO+sFDkK8A==", "comment"=>{"author"=>"steve", "email"=>"steve@stove.com", "body"=>"i dont understand", "post_id"=>"1"}, "commit"=>"Create Comment"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "comments" ("author", "email", "body", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["author", "steve"], ["email", "steve@stove.com"], ["body", "i dont understand"], ["post_id", 1], ["created_at", "2018-01-20 17:29:15.021607"], ["updated_at", "2018-01-20 17:29:15.021607"]]
+  [1m[35m (4.9ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/posts
+Completed 302 Found in 23ms (ActiveRecord: 6.2ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-01-20 11:29:15 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (4.6ms)
+  Rendered layouts/_head.html.erb (22.3ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 35ms (Views: 33.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/posts/1-has-a-comment" for 127.0.0.1 at 2018-01-20 11:29:17 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1-has-a-comment"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/_comment_form.html.erb (9.6ms)
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered posts/show.html.erb within layouts/application (16.3ms)
+  Rendered layouts/_head.html.erb (23.1ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 54ms (Views: 49.3ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/comments" for 127.0.0.1 at 2018-01-20 11:30:08 -0600
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"2/s1vRnZ0WFkh1ZOwaXvVkEHqSalgLKcg7gs5auN7Bm7o9rIg9+/eMgvRlZS4mCQDFvkUKLeu1kfOvsJj2OuZA==", "comment"=>{"author"=>"dave", "email"=>"dave@dove.com", "body"=>"what is there to understand?", "post_id"=>"1"}, "commit"=>"Create Comment"}
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "comments" ("author", "email", "body", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["author", "dave"], ["email", "dave@dove.com"], ["body", "what is there to understand?"], ["post_id", 1], ["created_at", "2018-01-20 17:30:08.702181"], ["updated_at", "2018-01-20 17:30:08.702181"]]
+  [1m[35m (4.9ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/posts.post_id
+Completed 302 Found in 38ms (ActiveRecord: 7.3ms)
+
+
+Started GET "/posts.post_id" for 127.0.0.1 at 2018-01-20 11:30:08 -0600
+Processing by PostsController#index as 
+Completed 406 Not Acceptable in 1ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::UnknownFormat - ActionController::UnknownFormat:
+
+Started POST "/__better_errors/7a6befbb82d53fc0/variables" for 127.0.0.1 at 2018-01-20 11:30:08 -0600
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+Started POST "/comments" for 127.0.0.1 at 2018-01-20 11:30:28 -0600
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8sIC9+YkTaU4gy8ePAyR5ENNr3mMyK1J//A2cV8RUSqSmu2CfCIjvJQrPwavSx4iDhHiD4uWpIxjcuGde/8TVw==", "comment"=>{"author"=>"dave", "email"=>"dave@dove.com", "body"=>"what is there to understand?", "post_id"=>"1"}, "commit"=>"Create Comment"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("author", "email", "body", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["author", "dave"], ["email", "dave@dove.com"], ["body", "what is there to understand?"], ["post_id", 1], ["created_at", "2018-01-20 17:30:28.642739"], ["updated_at", "2018-01-20 17:30:28.642739"]]
+  [1m[35m (15.4ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/posts/post_id
+Completed 302 Found in 48ms (ActiveRecord: 17.4ms)
+
+
+Started GET "/posts/post_id" for 127.0.0.1 at 2018-01-20 11:30:28 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"post_id"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 2ms (ActiveRecord: 0.1ms)
+
+
+
+ActiveRecord::RecordNotFound - Couldn't find Post with 'id'=post_id:
+  app/controllers/posts_controller.rb:4:in `show'
+
+Started POST "/__better_errors/5e2337dba74da8e6/variables" for 127.0.0.1 at 2018-01-20 11:30:28 -0600
+Started POST "/comments" for 127.0.0.1 at 2018-01-20 11:30:47 -0600
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8sIC9+YkTaU4gy8ePAyR5ENNr3mMyK1J//A2cV8RUSqSmu2CfCIjvJQrPwavSx4iDhHiD4uWpIxjcuGde/8TVw==", "comment"=>{"author"=>"dave", "email"=>"dave@dove.com", "body"=>"what is there to understand?", "post_id"=>"1"}, "commit"=>"Create Comment"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("author", "email", "body", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["author", "dave"], ["email", "dave@dove.com"], ["body", "what is there to understand?"], ["post_id", 1], ["created_at", "2018-01-20 17:30:47.211791"], ["updated_at", "2018-01-20 17:30:47.211791"]]
+  [1m[35m (7.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/posts/1
+Completed 302 Found in 43ms (ActiveRecord: 9.2ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2018-01-20 11:30:47 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/_comment_form.html.erb (16.9ms)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered posts/show.html.erb within layouts/application (20.7ms)
+  Rendered layouts/_head.html.erb (23.0ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 55ms (Views: 51.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2018-01-20 11:31:17 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/_comment_form.html.erb (9.0ms)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered posts/show.html.erb within layouts/application (12.9ms)
+  Rendered layouts/_head.html.erb (25.7ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 73ms (Views: 47.2ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2018-01-20 11:31:53 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/_comment_form.html.erb (25.8ms)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered posts/show.html.erb within layouts/application (29.9ms)
+  Rendered layouts/_head.html.erb (29.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 73ms (Views: 66.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-01-20 11:32:00 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (6.0ms)
+  Rendered layouts/_head.html.erb (27.6ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 45ms (Views: 43.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/4-kjhkjh" for 127.0.0.1 at 2018-01-20 11:32:03 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4-kjhkjh"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/_comment_form.html.erb (12.2ms)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 4]]
+  Rendered posts/show.html.erb within layouts/application (17.6ms)
+  Rendered layouts/_head.html.erb (22.6ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 54ms (Views: 49.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2018-01-20 11:34:12 -0600
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (4.9ms)
+  Rendered posts/new.html.erb within layouts/application (6.7ms)
+  Rendered layouts/_head.html.erb (18.3ms)
+Completed 500 Internal Server Error in 36ms (ActiveRecord: 0.0ms)
+
+
+
+Sprockets::FileNotFound - couldn't find file 'tether.min.js' with type 'application/javascript'
+Checked in these paths: 
+  /home/sam/.rvm/gems/ruby-2.3.0/gems/babel-source-5.8.35/lib
+  /home/sam/Projects/ruby/rails/katelin_blog/app/assets/config
+  /home/sam/Projects/ruby/rails/katelin_blog/app/assets/images
+  /home/sam/Projects/ruby/rails/katelin_blog/app/assets/javascripts
+  /home/sam/Projects/ruby/rails/katelin_blog/app/assets/stylesheets
+  /home/sam/Projects/ruby/rails/katelin_blog/vendor/assets/javascripts
+  /home/sam/Projects/ruby/rails/katelin_blog/vendor/assets/stylesheets
+  /home/sam/.rvm/gems/ruby-2.3.0/bundler/gems/activeadmin-7f38dd557052/app/assets/images
+  /home/sam/.rvm/gems/ruby-2.3.0/bundler/gems/activeadmin-7f38dd557052/app/assets/javascripts
+  /home/sam/.rvm/gems/ruby-2.3.0/bundler/gems/activeadmin-7f38dd557052/app/assets/stylesheets
+  /home/sam/.rvm/gems/ruby-2.3.0/bundler/gems/activeadmin-7f38dd557052/vendor/assets/javascripts
+  /home/sam/.rvm/gems/ruby-2.3.0/bundler/gems/activeadmin-7f38dd557052/vendor/assets/stylesheets
+  /home/sam/.rvm/gems/ruby-2.3.0/gems/formtastic-3.1.5/app/assets/stylesheets
+  /home/sam/.rvm/gems/ruby-2.3.0/gems/jquery-turbolinks-2.1.0/vendor/assets/javascripts
+  /home/sam/.rvm/gems/ruby-2.3.0/gems/jquery-rails-4.3.1/vendor/assets/javascripts
+  /home/sam/.rvm/gems/ruby-2.3.0/gems/coffee-rails-4.2.2/lib/assets/javascripts
+  /home/sam/.rvm/gems/ruby-2.3.0/gems/actioncable-5.0.6/lib/assets/compiled
+  /home/sam/.rvm/gems/ruby-2.3.0/gems/turbolinks-source-5.1.0/lib/assets/javascripts
+  /home/sam/.rvm/gems/ruby-2.3.0/gems/bootstrap-sass-3.3.7/assets/stylesheets
+  /home/sam/.rvm/gems/ruby-2.3.0/gems/bootstrap-sass-3.3.7/assets/javascripts
+  /home/sam/.rvm/gems/ruby-2.3.0/gems/bootstrap-sass-3.3.7/assets/fonts
+  /home/sam/.rvm/gems/ruby-2.3.0/gems/bootstrap-sass-3.3.7/assets/images:
+  app/assets/javascripts/application.js:20:in `'
+  app/views/layouts/_head.html.erb:9:in `_app_views_layouts__head_html_erb__3703161138441296432_69873496273980'
+  app/views/layouts/application.html.erb:4:in `_app_views_layouts_application_html_erb__2977449390749828424_69873548703000'
+
+Started POST "/__better_errors/1a8e57fd1f2d2c95/variables" for 127.0.0.1 at 2018-01-20 11:34:12 -0600
+Started GET "/posts/1-has-a-comment" for 127.0.0.1 at 2018-01-20 11:36:13 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1-has-a-comment"}
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/_comment_form.html.erb (16.2ms)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered posts/show.html.erb within layouts/application (23.8ms)
+  Rendered layouts/_head.html.erb (144.6ms)
+  Rendered layouts/_footer.html.erb (1.0ms)
+Completed 200 OK in 188ms (Views: 183.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2018-01-20 11:36:17 -0600
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (5.3ms)
+  Rendered posts/new.html.erb within layouts/application (6.8ms)
+  Rendered layouts/_head.html.erb (25.0ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 41ms (Views: 39.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2018-01-20 11:37:52 -0600
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (4.8ms)
+  Rendered posts/new.html.erb within layouts/application (6.3ms)
+  Rendered layouts/_head.html.erb (24.6ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 40ms (Views: 39.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2018-01-20 11:38:22 -0600
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (4.6ms)
+  Rendered posts/new.html.erb within layouts/application (5.9ms)
+  Rendered layouts/_head.html.erb (25.5ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 39ms (Views: 37.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-01-20 11:38:26 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (6.6ms)
+  Rendered layouts/_head.html.erb (22.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 43ms (Views: 40.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-01-20 11:41:07 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (18.2ms)
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 0.9ms)
+
+
+
+NoMethodError - undefined method `comment_count' for #<Post:0x007f198c1d0748>:
+  app/views/posts/index.html.erb:19:in `block in _app_views_posts_index_html_erb___3268967366255675603_69873852441240'
+  app/views/posts/index.html.erb:15:in `_app_views_posts_index_html_erb___3268967366255675603_69873852441240'
+
+Started POST "/__better_errors/f76b0192598ad0f1/variables" for 127.0.0.1 at 2018-01-20 11:41:07 -0600
+Started GET "/posts" for 127.0.0.1 at 2018-01-20 11:43:04 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (1.7ms)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.0ms)
+
+
+
+ActiveRecord::ConfigurationError - Can't join 'Post' to association named 'comments'; perhaps you misspelled it?:
+  app/views/posts/index.html.erb:15:in `_app_views_posts_index_html_erb___3268967366255675603_69873703803820'
+
+Started POST "/__better_errors/99ec844a49cf5232/variables" for 127.0.0.1 at 2018-01-20 11:43:04 -0600
+Started GET "/posts" for 127.0.0.1 at 2018-01-20 11:45:56 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (19.2ms)
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 0.9ms)
+
+
+
+NoMethodError - undefined method `comment_count' for #<Post:0x007f1970a87e48>:
+  app/views/posts/index.html.erb:19:in `block in _app_views_posts_index_html_erb___3268967366255675603_69873490631800'
+  app/views/posts/index.html.erb:15:in `_app_views_posts_index_html_erb___3268967366255675603_69873490631800'
+
+Started POST "/__better_errors/51da748c59de85b0/variables" for 127.0.0.1 at 2018-01-20 11:45:57 -0600
+Started GET "/posts" for 127.0.0.1 at 2018-01-20 11:47:59 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (31.1ms)
+Completed 500 Internal Server Error in 37ms (ActiveRecord: 1.3ms)
+
+
+
+NoMethodError - undefined method `comment_count' for #<Post:0x007f197b107bd8>:
+  app/views/posts/index.html.erb:19:in `block in _app_views_posts_index_html_erb___3268967366255675603_69873706422680'
+  app/views/posts/index.html.erb:15:in `_app_views_posts_index_html_erb___3268967366255675603_69873706422680'
+
+Started POST "/__better_errors/2b6806b77cbc6099/variables" for 127.0.0.1 at 2018-01-20 11:47:59 -0600
+Started GET "/posts" for 127.0.0.1 at 2018-01-20 11:48:10 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (12.9ms)
+  Rendered layouts/_head.html.erb (23.2ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 47ms (Views: 42.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2018-01-20 11:48:12 -0600
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (11.5ms)
+  Rendered posts/new.html.erb within layouts/application (13.7ms)
+  Rendered layouts/_head.html.erb (26.5ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 49ms (Views: 47.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2018-01-20 11:48:21 -0600
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Mh/LAawTnMTjQ6S1OjUE5KidHvJcaFLJ375tyc4LGexSRyR0NhXy3U/rtK2pcosi5cFThFs2WwxDPLol6uVbkQ==", "post"=>{"title"=>"testing after changing model", "body"=>"oh yes. another one. "}, "commit"=>"Create Post"}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.2ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?)[0m  [["title", "testing after changing model"], ["body", "oh yes. another one. "], ["created_at", "2018-01-20 17:48:21.636342"], ["updated_at", "2018-01-20 17:48:21.636342"], ["slug", "testing-after-changing-model"]]
+  [1m[35m (6.3ms)[0m  [1m[36mcommit transaction[0m
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 8.7ms)
+
+
+
+NoMethodError - undefined method `post_id' for #<Post:0x007f1970a53800>:
+  app/controllers/posts_controller.rb:21:in `create'
+
+Started POST "/__better_errors/a1f5395b5782fb37/variables" for 127.0.0.1 at 2018-01-20 11:48:21 -0600
+Started POST "/posts" for 127.0.0.1 at 2018-01-20 11:49:02 -0600
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Mh/LAawTnMTjQ6S1OjUE5KidHvJcaFLJ375tyc4LGexSRyR0NhXy3U/rtK2pcosi5cFThFs2WwxDPLol6uVbkQ==", "post"=>{"title"=>"testing after changing model", "body"=>"oh yes. another one. "}, "commit"=>"Create Post"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?)[0m  [["title", "testing after changing model"], ["body", "oh yes. another one. "], ["created_at", "2018-01-20 17:49:02.468867"], ["updated_at", "2018-01-20 17:49:02.468867"], ["slug", "testing-after-changing-model"]]
+  [1m[35m (8.1ms)[0m  [1m[36mcommit transaction[0m
+Completed 500 Internal Server Error in 36ms (ActiveRecord: 10.4ms)
+
+
+
+ActionController::UrlGenerationError - No route matches {:action=>"show", :controller=>"posts"} missing required keys: [:id]:
+  app/controllers/posts_controller.rb:21:in `create'
+
+Started POST "/__better_errors/50a7b761d2c2efc6/variables" for 127.0.0.1 at 2018-01-20 11:49:02 -0600
+Started POST "/posts" for 127.0.0.1 at 2018-01-20 11:49:22 -0600
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Mh/LAawTnMTjQ6S1OjUE5KidHvJcaFLJ375tyc4LGexSRyR0NhXy3U/rtK2pcosi5cFThFs2WwxDPLol6uVbkQ==", "post"=>{"title"=>"testing after changing model", "body"=>"oh yes. another one. "}, "commit"=>"Create Post"}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?)[0m  [["title", "testing after changing model"], ["body", "oh yes. another one. "], ["created_at", "2018-01-20 17:49:22.161349"], ["updated_at", "2018-01-20 17:49:22.161349"], ["slug", "testing-after-changing-model"]]
+  [1m[35m (7.4ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/posts
+Completed 302 Found in 30ms (ActiveRecord: 9.1ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-01-20 11:49:22 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (4.9ms)
+  Rendered layouts/_head.html.erb (46.3ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 61ms (Views: 59.6ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/posts/7-testing-after-changing-model" for 127.0.0.1 at 2018-01-20 11:49:27 -0600
+
+AbstractController::ActionNotFound - The action 'destroy' could not be found for PostsController:
+
+Started POST "/__better_errors/6c723ba75f75373a/variables" for 127.0.0.1 at 2018-01-20 11:49:27 -0600
+Started DELETE "/posts/8-testing-after-changing-model" for 127.0.0.1 at 2018-01-20 11:51:49 -0600
+Processing by PostsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"nK2ebN6HPi4KC9scUwDp0Lk44A5evV4V+F0vqkuPS9f89XEZRIFQN6ajywTAR2YW9GSteFnjV9Bk3/hGb2EJqg==", "id"=>"8-testing-after-changing-model"}
+Completed 404 Not Found in 7ms (ActiveRecord: 1.0ms)
+
+
+
+ActiveRecord::RecordNotFound - Couldn't find Post without an ID:
+  app/controllers/posts_controller.rb:33:in `destroy'
+
+Started POST "/__better_errors/5bc7e1b6bc4dda20/variables" for 127.0.0.1 at 2018-01-20 11:51:49 -0600
+Started GET "/posts/8-testing-after-changing-model/edit" for 127.0.0.1 at 2018-01-20 11:51:58 -0600
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"8-testing-after-changing-model"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  Rendering posts/edit.html.erb within layouts/application
+  Rendered posts/_form.html.erb (7.3ms)
+  Rendered posts/edit.html.erb within layouts/application (11.3ms)
+  Rendered layouts/_head.html.erb (26.1ms)
+  Rendered layouts/_footer.html.erb (0.6ms)
+Completed 200 OK in 59ms (Views: 45.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/posts/8-testing-after-changing-model" for 127.0.0.1 at 2018-01-20 11:52:02 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"8-testing-after-changing-model"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/_comment_form.html.erb (10.2ms)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 8]]
+  Rendered posts/show.html.erb within layouts/application (14.1ms)
+  Rendered layouts/_head.html.erb (24.1ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 82ms (Views: 44.2ms | ActiveRecord: 2.6ms)
+
+
+Started DELETE "/posts/8-testing-after-changing-model" for 127.0.0.1 at 2018-01-20 11:52:43 -0600
+Processing by PostsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"nK2ebN6HPi4KC9scUwDp0Lk44A5evV4V+F0vqkuPS9f89XEZRIFQN6ajywTAR2YW9GSteFnjV9Bk3/hGb2EJqg==", "id"=>"8-testing-after-changing-model"}
+Completed 404 Not Found in 5ms (ActiveRecord: 0.5ms)
+
+
+
+ActiveRecord::RecordNotFound - Couldn't find Post without an ID:
+  app/controllers/posts_controller.rb:33:in `destroy'
+
+Started POST "/__better_errors/cab1488fb4e3ca31/variables" for 127.0.0.1 at 2018-01-20 11:52:44 -0600
+Started DELETE "/posts/8-testing-after-changing-model" for 127.0.0.1 at 2018-01-20 11:53:28 -0600
+Processing by PostsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"nK2ebN6HPi4KC9scUwDp0Lk44A5evV4V+F0vqkuPS9f89XEZRIFQN6ajywTAR2YW9GSteFnjV9Bk3/hGb2EJqg==", "id"=>"8-testing-after-changing-model"}
+Completed 404 Not Found in 5ms (ActiveRecord: 0.5ms)
+
+
+
+ActiveRecord::RecordNotFound - Couldn't find Post without an ID:
+  app/controllers/posts_controller.rb:33:in `destroy'
+
+Started POST "/__better_errors/ec21959350c5b86c/variables" for 127.0.0.1 at 2018-01-20 11:53:28 -0600
+Started DELETE "/posts/8-testing-after-changing-model" for 127.0.0.1 at 2018-01-20 11:54:31 -0600
+Processing by PostsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"nK2ebN6HPi4KC9scUwDp0Lk44A5evV4V+F0vqkuPS9f89XEZRIFQN6ajywTAR2YW9GSteFnjV9Bk3/hGb2EJqg==", "id"=>"8-testing-after-changing-model"}
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = ?[0m  [["id", 8]]
+  [1m[35m (5.5ms)[0m  [1m[36mcommit transaction[0m
+No template found for PostsController#destroy, rendering head :no_content
+Completed 204 No Content in 87ms (ActiveRecord: 7.5ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-01-20 11:54:36 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (4.7ms)
+  Rendered layouts/_head.html.erb (24.6ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 38ms (Views: 36.6ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/posts/7-testing-after-changing-model" for 127.0.0.1 at 2018-01-20 11:55:17 -0600
+Processing by PostsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"Stg3FgBEChgGSHuCoUWhC3EmQwg+dDb6qu4KCnC8pWgqgNhjmkJkAarga5oyAi7NPHoOfjkqPz82bN3mVFLnFQ==", "id"=>"7-testing-after-changing-model"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = ?[0m  [["id", 7]]
+  [1m[35m (5.2ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/posts
+Completed 302 Found in 25ms (ActiveRecord: 7.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-01-20 11:55:17 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (7.2ms)
+  Rendered layouts/_head.html.erb (24.7ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 38ms (Views: 37.2ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/posts/4-kjhkjh" for 127.0.0.1 at 2018-01-20 11:55:22 -0600
+Processing by PostsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"gnX8nSSIgYLtvh0EazO+RK37xucBVx1Ffpzz1VISNyHiLRPovo7vm0EWDRz4dDGC4KeLkQYJFIDiHiQ5dvx1XA==", "id"=>"4-kjhkjh"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = ?[0m  [["id", 4]]
+  [1m[35m (6.7ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/posts
+Completed 302 Found in 17ms (ActiveRecord: 7.4ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-01-20 11:55:22 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (5.9ms)
+  Rendered layouts/_head.html.erb (27.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 41ms (Views: 39.1ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/posts/3-null-check" for 127.0.0.1 at 2018-01-20 11:55:24 -0600
+Processing by PostsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"PcmO+5R+qRuIxYem14N3Tt2Emgv1OAuUbCEZEpuFnVldkWGODnjHAiRtl75ExPiIkNjXffJmAlHwo87+v2vfJA==", "id"=>"3-null-check"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = ?[0m  [["id", 3]]
+  [1m[35m (9.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/posts
+Completed 302 Found in 15ms (ActiveRecord: 9.3ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-01-20 11:55:24 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (5.0ms)
+  Rendered layouts/_head.html.erb (23.6ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 37ms (Views: 35.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/6-testing-after-changing-model" for 127.0.0.1 at 2018-01-20 11:55:27 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"6-testing-after-changing-model"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/_comment_form.html.erb (7.1ms)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 6]]
+  Rendered posts/show.html.erb within layouts/application (11.6ms)
+  Rendered layouts/_head.html.erb (24.0ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 64ms (Views: 43.0ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/posts/6-testing-after-changing-model/edit" for 127.0.0.1 at 2018-01-20 11:55:29 -0600
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"6-testing-after-changing-model"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering posts/edit.html.erb within layouts/application
+  Rendered posts/_form.html.erb (4.5ms)
+  Rendered posts/edit.html.erb within layouts/application (7.1ms)
+  Rendered layouts/_head.html.erb (21.5ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 39ms (Views: 35.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-01-20 12:00:50 -0600
+Processing by PostsController#index as HTML
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.0ms)
+
+
+
+NoMethodError - undefined method `index' for #<Class:0x007f1968368638>:
+  app/controllers/posts_controller.rb:4:in `index'
+
+Started POST "/__better_errors/cd64f9e05ec4687c/variables" for 127.0.0.1 at 2018-01-20 12:00:50 -0600
+Started GET "/posts" for 127.0.0.1 at 2018-01-20 12:01:03 -0600
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT p.id, p.created_at, p.title, p.body, count(c.id) AS comment_count FROM posts AS p LEFT JOIN comments AS c ON c.post_id = p.id GROUP BY p.id, p.created_at, p.title, p.body ORDER BY p.created_at DESC[0m
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (2.9ms)
+  Rendered layouts/_head.html.erb (24.7ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 48ms (Views: 34.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-01-20 12:02:21 -0600
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT p.id, p.created_at, p.title, p.body, count(c.id) AS num_comments FROM posts AS p LEFT JOIN comments AS c ON c.post_id = p.id GROUP BY p.id, p.created_at, p.title, p.body ORDER BY p.created_at DESC[0m
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (2.7ms)
+  Rendered layouts/_head.html.erb (25.2ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 45ms (Views: 34.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-01-20 12:02:48 -0600
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT p.id, p.created_at, p.title, p.body, count(c.id) AS num_comments FROM posts AS p LEFT JOIN comments AS c ON c.post_id = p.id GROUP BY p.id, p.created_at, p.title, p.body ORDER BY p.created_at DESC[0m
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (2.7ms)
+  Rendered layouts/_head.html.erb (27.5ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 50ms (Views: 35.7ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/posts/1-has-a-comment" for 127.0.0.1 at 2018-01-20 12:02:50 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1-has-a-comment"}
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/_comment_form.html.erb (9.0ms)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered posts/show.html.erb within layouts/application (12.7ms)
+  Rendered layouts/_head.html.erb (21.1ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 71ms (Views: 38.8ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-01-20 12:03:18 -0600
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT p.id, p.created_at, p.title, p.body, count(c.id) AS num_comments FROM posts AS p LEFT JOIN comments AS c ON c.post_id = p.id GROUP BY p.id, p.created_at, p.title, p.body ORDER BY p.created_at DESC[0m
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (2.0ms)
+  Rendered layouts/_head.html.erb (27.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 37ms (Views: 34.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/1-has-a-comment" for 127.0.0.1 at 2018-01-20 12:03:20 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1-has-a-comment"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/_comment_form.html.erb (7.8ms)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered posts/show.html.erb within layouts/application (12.8ms)
+  Rendered layouts/_head.html.erb (26.2ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 52ms (Views: 46.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/posts/5-simpleform-check" for 127.0.0.1 at 2018-01-20 12:03:23 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5-simpleform-check"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/_comment_form.html.erb (9.1ms)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 5]]
+  Rendered posts/show.html.erb within layouts/application (12.3ms)
+  Rendered layouts/_head.html.erb (24.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 47ms (Views: 42.7ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/posts/6-testing-after-changing-model" for 127.0.0.1 at 2018-01-20 12:04:21 -0600
+Processing by PostsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"YscVK8x8Ju0MyJq+izOfQ2AAmK9LZBj3hA3v4Lrzf0sCn/peVnpI9KBgiqYYdBCFLVzV2Uw6ETIYjzgMnh09Ng==", "id"=>"6-testing-after-changing-model"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = ?[0m  [["id", 6]]
+  [1m[35m (16.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/posts
+Completed 302 Found in 28ms (ActiveRecord: 18.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-01-20 12:04:21 -0600
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT p.id, p.created_at, p.title, p.body, count(c.id) AS num_comments FROM posts AS p LEFT JOIN comments AS c ON c.post_id = p.id GROUP BY p.id, p.created_at, p.title, p.body ORDER BY p.created_at DESC[0m
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (2.8ms)
+  Rendered layouts/_head.html.erb (26.6ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 40ms (Views: 37.4ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/posts/5-simpleform-check" for 127.0.0.1 at 2018-01-20 12:04:24 -0600
+Processing by PostsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"xWZQM+yF8eOfRFzGPQWyC2X0QiAp9ZfvZyhia79018mlPr9GdoOf+jPsTN6uQj3NKKgPVi6rnir7qrWHm5qVtA==", "id"=>"5-simpleform-check"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.4ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = ?[0m  [["id", 5]]
+  [1m[35m (33.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/posts
+Completed 302 Found in 45ms (ActiveRecord: 35.4ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-01-20 12:04:24 -0600
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT p.id, p.created_at, p.title, p.body, count(c.id) AS num_comments FROM posts AS p LEFT JOIN comments AS c ON c.post_id = p.id GROUP BY p.id, p.created_at, p.title, p.body ORDER BY p.created_at DESC[0m
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (1.6ms)
+  Rendered layouts/_head.html.erb (28.2ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 41ms (Views: 38.2ms | ActiveRecord: 0.8ms)
+
+
+Started DELETE "/posts/2-capitalization" for 127.0.0.1 at 2018-01-20 12:04:25 -0600
+Processing by PostsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"Y9AhRVUYGGnR/Qa2DM7E6pmEsx+XN4A/7CKoM0vAqWkDiM4wzx52cH1VFq6fiUss1Nj+aZBpifpwoH/fby7rFA==", "id"=>"2-capitalization"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = ?[0m  [["id", 2]]
+  [1m[35m (26.5ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/posts
+Completed 302 Found in 37ms (ActiveRecord: 27.3ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-01-20 12:04:25 -0600
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT p.id, p.created_at, p.title, p.body, count(c.id) AS num_comments FROM posts AS p LEFT JOIN comments AS c ON c.post_id = p.id GROUP BY p.id, p.created_at, p.title, p.body ORDER BY p.created_at DESC[0m
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (1.9ms)
+  Rendered layouts/_head.html.erb (33.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 45ms (Views: 42.8ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/posts/1-has-a-comment" for 127.0.0.1 at 2018-01-20 12:04:27 -0600
+Processing by PostsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"aoTdCy7U5cu9o8Dj2Qn9aeEUaynoSEP0oldNOeAW0cIK3DJ+tNKL0hEL0PtKTnKvrEgmX+8WSjE+1ZrVxPiTvw==", "id"=>"1-has-a-comment"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = ?[0m  [["id", 1]]
+  [1m[35m (16.2ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/posts
+Completed 302 Found in 25ms (ActiveRecord: 17.2ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-01-20 12:04:27 -0600
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT p.id, p.created_at, p.title, p.body, count(c.id) AS num_comments FROM posts AS p LEFT JOIN comments AS c ON c.post_id = p.id GROUP BY p.id, p.created_at, p.title, p.body ORDER BY p.created_at DESC[0m
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (1.0ms)
+  Rendered layouts/_head.html.erb (25.7ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 40ms (Views: 37.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-01-20 12:04:29 -0600
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT p.id, p.created_at, p.title, p.body, count(c.id) AS num_comments FROM posts AS p LEFT JOIN comments AS c ON c.post_id = p.id GROUP BY p.id, p.created_at, p.title, p.body ORDER BY p.created_at DESC[0m
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_head.html.erb (25.3ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 45ms (Views: 43.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2018-01-20 12:04:44 -0600
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (7.1ms)
+  Rendered posts/new.html.erb within layouts/application (10.6ms)
+  Rendered layouts/_head.html.erb (26.1ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 45ms (Views: 43.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2018-01-20 12:04:54 -0600
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"PPCNxwzNrCTQRvwYf1WPKVHgEdlG9MSS+uKSwGM9W4dcqGKylsvCPXzu7ADsEgDvHLxcr0GqzVdmYEUsR9MZ+g==", "post"=>{"title"=>"title of something", "body"=>"kjh kh kjhk hkj hkj h"}, "commit"=>"Create Post"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?)[0m  [["title", "title of something"], ["body", "kjh kh kjhk hkj hkj h"], ["created_at", "2018-01-20 18:04:54.635395"], ["updated_at", "2018-01-20 18:04:54.635395"], ["slug", "title-of-something"]]
+  [1m[35m (8.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/posts
+Completed 302 Found in 21ms (ActiveRecord: 9.1ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-01-20 12:04:54 -0600
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT p.id, p.created_at, p.title, p.body, count(c.id) AS num_comments FROM posts AS p LEFT JOIN comments AS c ON c.post_id = p.id GROUP BY p.id, p.created_at, p.title, p.body ORDER BY p.created_at DESC[0m
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (1.5ms)
+  Rendered layouts/_head.html.erb (25.2ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 35ms (Views: 32.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/9-title-of-something" for 127.0.0.1 at 2018-01-20 12:04:58 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"9-title-of-something"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/_comment_form.html.erb (9.9ms)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 9]]
+  Rendered posts/show.html.erb within layouts/application (16.7ms)
+  Rendered layouts/_head.html.erb (22.0ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 49ms (Views: 45.8ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/comments" for 127.0.0.1 at 2018-01-20 12:05:13 -0600
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ErNxr2Yy6t2S9Q0PaTfLWQHqm79EEpwpNYVMRoztZkRy657a/DSExD5dHRf6cESfTLbWyUNMleypB5uqqAMkOQ==", "comment"=>{"author"=>"sa,m", "email"=>"jhgkjhkb@email.com", "body"=>"jh kj h", "post_id"=>"9"}, "commit"=>"Create Comment"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "comments" ("author", "email", "body", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["author", "sa,m"], ["email", "jhgkjhkb@email.com"], ["body", "jh kj h"], ["post_id", 9], ["created_at", "2018-01-20 18:05:13.035501"], ["updated_at", "2018-01-20 18:05:13.035501"]]
+  [1m[35m (11.7ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/posts/9
+Completed 302 Found in 25ms (ActiveRecord: 12.4ms)
+
+
+Started GET "/posts/9" for 127.0.0.1 at 2018-01-20 12:05:13 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/_comment_form.html.erb (8.3ms)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 9]]
+  Rendered posts/show.html.erb within layouts/application (12.5ms)
+  Rendered layouts/_head.html.erb (24.0ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 47ms (Views: 41.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-01-20 12:05:15 -0600
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT p.id, p.created_at, p.title, p.body, count(c.id) AS num_comments FROM posts AS p LEFT JOIN comments AS c ON c.post_id = p.id GROUP BY p.id, p.created_at, p.title, p.body ORDER BY p.created_at DESC[0m
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (2.9ms)
+  Rendered layouts/_head.html.erb (28.7ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 44ms (Views: 40.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/9-title-of-something" for 127.0.0.1 at 2018-01-20 12:05:18 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"9-title-of-something"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/_comment_form.html.erb (6.6ms)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 9]]
+  Rendered posts/show.html.erb within layouts/application (9.7ms)
+  Rendered layouts/_head.html.erb (22.3ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 44ms (Views: 38.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/posts/9-title-of-something/edit" for 127.0.0.1 at 2018-01-20 12:05:24 -0600
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"9-title-of-something"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering posts/edit.html.erb within layouts/application
+  Rendered posts/_form.html.erb (9.2ms)
+  Rendered posts/edit.html.erb within layouts/application (11.1ms)
+  Rendered layouts/_head.html.erb (24.2ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 45ms (Views: 42.2ms | ActiveRecord: 0.1ms)
+
+
+Started DELETE "/posts/9-title-of-something" for 127.0.0.1 at 2018-01-20 12:05:27 -0600
+Processing by PostsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"hIVHSrhfMQ6QXo0XMNKc0buZhqs58HTBnkvCMu9kZ4Hk3ag/IllfFzz2nQ+jlRMX9sXL3T6ufQQCyRXey4ol/A==", "id"=>"9-title-of-something"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = ?[0m  [["id", 9]]
+  [1m[35m (4.3ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/posts
+Completed 302 Found in 15ms (ActiveRecord: 5.5ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-01-20 12:05:27 -0600
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT p.id, p.created_at, p.title, p.body, count(c.id) AS num_comments FROM posts AS p LEFT JOIN comments AS c ON c.post_id = p.id GROUP BY p.id, p.created_at, p.title, p.body ORDER BY p.created_at DESC[0m
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_head.html.erb (28.0ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 37ms (Views: 34.6ms | ActiveRecord: 0.2ms)
+
+
