@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  author: MyString
+  email: MyString
+  body: MyText
+  post: one
+  approval: MyString
+  deleted: 1
+
+two:
+  author: MyString
+  email: MyString
+  body: MyText
+  post: two
+  approval: MyString
+  deleted: 1
