@@ -1,0 +1,27 @@
+<%= link_to "Go Home", root_path %>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+			<th>Order</th>
+      <th>Last Modified</th>
+      <th>Active?</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sheets.each do |s| %>
+      <tr>
+        <td><%= s.name %></td>
+				<td><%= s.order %></td>
+        <td><%= s.updated_at %></td>
+				<td><% if s.active == 1 %>Yes<% else %>No<% end %></td>
+	      <td><%= link_to 'Edit', edit_stylesheet_path(s) %></td>
+	      <td><%= link_to 'Toggle', toggle_path(s) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "Create new stylesheet", new_stylesheet_path %>

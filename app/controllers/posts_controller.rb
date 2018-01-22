@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 
 
 	def index
-		# this is using raw sql and NOT accounting for status yet
+		# this is using raw sql in model
 		@posts = Post.index
 	end
 

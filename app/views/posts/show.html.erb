@@ -1,42 +1,62 @@
 <% provide(:title, @post.title) %>
-<p id="notice"><%= notice %></p>
 
 <% if admin_signed_in? %>
-	<%= link_to 'Edit', edit_post_path(@post) %> |
+	<div id="admin_post_actions">
+		<span class="admin_back"><%= link_to 'Back', posts_path %></span> | 
+		<span class="admin_edit_post"><%= link_to 'Edit', edit_post_path(@post) %></span> |
+		<span class="admin_delete_post"><%= link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+	</div>
+<% else %>
+	<div id="post_actions">
+		<span class="post_back"><%= link_to 'back', posts_path %></span> | 
+		<span class="post_share"><a href='mailto:?Subject=Check+this+out!&amp;Body=%0a%0a%0ahttp://katelinhull.com/posts/<%= @post.id.to_s + '-' + @post.slug %>'>share</a></span>
+	</div>
 <% end %>
-<%= link_to 'Back', posts_path %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
+<div id="single_post">
+	<h2 id="post_title">
+		<%= @post.title %>
+	</h2>
 
-<p>
-  <strong>Body:</strong>
-  <%= @post.body %>
-</p>
+	<div class="post_body">
+  	<%= @post.body %>
+	</div>
+</div>
 
-<p>
-	<strong>Comments?</strong>
-	<%= render 'comment_form', post: @comment, locals: {post_id: @post.id} %>
-</p>
+<hr id="post_comments_division" />
 
-<% @comments.each do |c| %>
-	<% if c.approval == 1 %>
-		<p>
-			<strong><%= link_to c.author, "mailto:#{c.email}" %></strong><br />
-			<%= c.body %>
-			<% if admin_signed_in? %>
-				<%= link_to 'Remove', c, method: :delete, data: { confirm: 'Are you sure?' } %>
-			<% end %>
-		</p>
-	<% elsif ((admin_signed_in?) && (c.approval = 0)) %>
-		<p>
-			<strong><%= link_to c.author, "mailto:#{c.email}" %></strong><br />
-			<%= c.body %>
-			<%= link_to 'Approve', comment_approve_path(c[:id]), method: :get %> |
-			<%= link_to 'Remove', c, method: :delete, data: { confirm: 'Are you sure?' } %>
-		</p>
-	<% end %>
-	<hr />
-<% end %>
+<div id="comments">
+	<div id="comment_creation">
+		<h3 id="comment_question">Comments?</h3>
+		<div id="comment_form">
+			<%= render 'comment_form', post: @comment, locals: {post_id: @post.id} %>
+		</div>
+	</div>
+	
+	<hr id="comments_form_division" />
+	
+	<div id="comments_list">
+		<% @comments.each do |c| %>
+			<div class="comment">
+				<% if c.approval == 1 %>
+					<div class="commenter_name"><%= link_to c.author, "mailto:#{c.email}" %></div>
+					<div class="comment_body"><%= c.body %></div>
+					<% if admin_signed_in? %>
+						<div id="admin_comment_options">
+							<span class="admin_remove_comment"><%= link_to 'Remove', c, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+						</div>
+					<% end %>
+					</div>
+				<% elsif ((admin_signed_in?) && (c.approval = 0)) %>
+					<div class="commenter_name"><%= link_to c.author, "mailto:#{c.email}" %></div>
+					<div class="comment_body"><%= c.body %></div>
+					<div id="admin_comment_options">
+						<span class="admin_approve_comment"><%= link_to 'Approve', comment_approve_path(c[:id]), method: :get %></span> |
+						<span class="admin_remove_comment"><%= link_to 'Remove', c, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+					</div>
+				<% end %>
+				<hr />
+			</div>
+		<% end %>
+	</div>
+</div>

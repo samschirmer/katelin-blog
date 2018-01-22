@@ -1,0 +1,8 @@
+<%= simple_form_for @css do |f| %>
+	<%= f.input :name %>
+	<%= f.input :order %>
+	<%= f.input :body %>
+	<%= f.input :admin_id, as: :hidden, required: true, input_html: { value: current_admin.id } %>
+	<%= f.button :submit, class: 'btn btn-primary' %>
+<% end %>
+
