@@ -1840,3 +1840,122 @@ Processing by PostsController#index as HTML
 Completed 200 OK in 37ms (Views: 34.6ms | ActiveRecord: 0.2ms)
 
 
+Started GET "/" for 127.0.0.1 at 2018-01-22 09:02:08 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Parameters: {"internal"=>true}
+  Rendering /home/sam/.rvm/gems/ruby-2.3.0/gems/railties-5.0.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/sam/.rvm/gems/ruby-2.3.0/gems/railties-5.0.6/lib/rails/templates/rails/welcome/index.html.erb (3.4ms)
+Completed 200 OK in 21ms (Views: 8.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-01-22 09:02:13 -0600
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (1.5ms)[0m  [1m[34mSELECT p.id, p.created_at, p.title, p.body, count(c.id) AS num_comments FROM posts AS p LEFT JOIN comments AS c ON c.post_id = p.id GROUP BY p.id, p.created_at, p.title, p.body ORDER BY p.created_at DESC[0m
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (3.1ms)
+  Rendered layouts/_head.html.erb (3105.4ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 3126ms (Views: 3116.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2018-01-22 09:02:22 -0600
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (114.8ms)
+  Rendered posts/new.html.erb within layouts/application (116.5ms)
+  Rendered layouts/_head.html.erb (27.0ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 164ms (Views: 153.7ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2018-01-22 09:02:28 -0600
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"mwclmtGgdSUbL8qqdkbqApi/Gjliqd10RlJihk7/g6j7X8rvS6YbPLeH2rLlAWXE1eNXT2X31LHa0LVqahHB1Q==", "post"=>{"title"=>"Testing title", "body"=>"body here"}, "commit"=>"Create Post"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Testing title"], ["body", "body here"], ["created_at", "2018-01-22 15:02:28.901419"], ["updated_at", "2018-01-22 15:02:28.901419"], ["slug", "testing-title"]]
+  [1m[35m (5.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/posts
+Completed 302 Found in 115ms (ActiveRecord: 7.2ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-01-22 09:02:29 -0600
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT p.id, p.created_at, p.title, p.body, count(c.id) AS num_comments FROM posts AS p LEFT JOIN comments AS c ON c.post_id = p.id GROUP BY p.id, p.created_at, p.title, p.body ORDER BY p.created_at DESC[0m
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (1.8ms)
+  Rendered layouts/_head.html.erb (24.1ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 35ms (Views: 32.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/10-testing-title" for 127.0.0.1 at 2018-01-22 09:02:30 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"10-testing-title"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/_comment_form.html.erb (11.0ms)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 10]]
+  Rendered posts/show.html.erb within layouts/application (14.5ms)
+  Rendered layouts/_head.html.erb (22.9ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 69ms (Views: 44.0ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2018-01-22 09:02:35 -0600
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (7.7ms)
+  Rendered posts/new.html.erb within layouts/application (9.6ms)
+  Rendered layouts/_head.html.erb (27.8ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 58ms (Views: 56.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/10-testing-title" for 127.0.0.1 at 2018-01-22 09:02:40 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"10-testing-title"}
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/_comment_form.html.erb (13.4ms)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 10]]
+  Rendered posts/show.html.erb within layouts/application (20.4ms)
+  Rendered layouts/_head.html.erb (27.4ms)
+  Rendered layouts/_footer.html.erb (0.6ms)
+Completed 200 OK in 61ms (Views: 56.4ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/comments" for 127.0.0.1 at 2018-01-22 09:02:51 -0600
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"aGUIQJSDkAzLKWP8qFit0IVJSk3r9eCW51zU37qC2qkIPec1DoX+FWeBc+Q7HyIWyBUHO+yr6VN73gMznmyY1A==", "comment"=>{"author"=>"sam", "email"=>"samschirmer@gmail.com", "body"=>"this is a comment. hahaha. ", "post_id"=>"10"}, "commit"=>"Create Comment"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "comments" ("author", "email", "body", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["author", "sam"], ["email", "samschirmer@gmail.com"], ["body", "this is a comment. hahaha. "], ["post_id", 10], ["created_at", "2018-01-22 15:02:51.260939"], ["updated_at", "2018-01-22 15:02:51.260939"]]
+  [1m[35m (9.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/posts/10
+Completed 302 Found in 40ms (ActiveRecord: 10.2ms)
+
+
+Started GET "/posts/10" for 127.0.0.1 at 2018-01-22 09:02:51 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/_comment_form.html.erb (11.6ms)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 10]]
+  Rendered posts/show.html.erb within layouts/application (17.3ms)
+  Rendered layouts/_head.html.erb (34.5ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 64ms (Views: 60.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-01-22 09:02:55 -0600
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT p.id, p.created_at, p.title, p.body, count(c.id) AS num_comments FROM posts AS p LEFT JOIN comments AS c ON c.post_id = p.id GROUP BY p.id, p.created_at, p.title, p.body ORDER BY p.created_at DESC[0m
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (3.2ms)
+  Rendered layouts/_head.html.erb (54.6ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 70ms (Views: 66.5ms | ActiveRecord: 0.2ms)
+
+
