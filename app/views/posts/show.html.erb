@@ -1,7 +1,9 @@
 <% provide(:title, @post.title) %>
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
+<% if admin_signed_in? %>
+	<%= link_to 'Edit', edit_post_path(@post) %> |
+<% end %>
 <%= link_to 'Back', posts_path %>
 
 <p>
@@ -20,9 +22,21 @@
 </p>
 
 <% @comments.each do |c| %>
-	<p>
-		<strong><%= link_to c.author, "mailto:#{c.email}" %></strong><br />
-		<%= c.body %>
-	</p>
+	<% if c.approval == 1 %>
+		<p>
+			<strong><%= link_to c.author, "mailto:#{c.email}" %></strong><br />
+			<%= c.body %>
+			<% if admin_signed_in? %>
+				<%= link_to 'Remove', c, method: :delete, data: { confirm: 'Are you sure?' } %>
+			<% end %>
+		</p>
+	<% elsif ((admin_signed_in?) && (c.approval = 0)) %>
+		<p>
+			<strong><%= link_to c.author, "mailto:#{c.email}" %></strong><br />
+			<%= c.body %>
+			<%= link_to 'Approve', comment_approve_path(c[:id]), method: :get %> |
+			<%= link_to 'Remove', c, method: :delete, data: { confirm: 'Are you sure?' } %>
+		</p>
+	<% end %>
 	<hr />
 <% end %>

@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+	before_action :authenticate_admin!, except: [:index, :show]
+
 
 	def index
 		# this is using raw sql and NOT accounting for status yet
