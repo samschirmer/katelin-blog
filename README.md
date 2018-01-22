@@ -1,24 +1,10 @@
-# README
+# Blog Engine
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Super customizable blogging engine. 
 
-Things you may want to cover:
+Allows for creation and reordering of raw CSS stylesheets from the web-facing admin panel, and supports comment creation and moderation.
 
-* Ruby version
+Uses Devise for admin authentication. 
 
-* System dependencies
+Todo: add tagging for posts and recaptcha for commenters. 
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

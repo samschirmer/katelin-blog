@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180122180655) do
+ActiveRecord::Schema.define(version: 20180122204420) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -66,6 +66,17 @@ ActiveRecord::Schema.define(version: 20180122180655) do
     t.datetime "updated_at", null: false
     t.integer  "status"
     t.string   "slug"
+  end
+
+  create_table "stylesheets", force: :cascade do |t|
+    t.text     "body"
+    t.integer  "admin_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "name"
+    t.integer  "active"
+    t.integer  "order"
+    t.index ["admin_id"], name: "index_stylesheets_on_admin_id"
   end
 
 end
