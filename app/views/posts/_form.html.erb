@@ -1,6 +1,7 @@
 <%= simple_form_for @post do |f| %>
 	<%= f.input :title %>
-	<%= f.input :body, class: 'editor' %>
+	<%= f.input :body, as: :hidden %>
+	<textarea id="editor"><%= @post.body %></textarea> 
 	<%= f.button :submit, class: 'btn btn-primary' %>
 <% end %>
 

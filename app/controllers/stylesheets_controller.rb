@@ -14,9 +14,11 @@ class StylesheetsController < ApplicationController
 	end
 
 	def create
-		last = Stylesheet.last.order(:order)
 		@css = Stylesheet.new(stylesheet_params) 
-		@css.order = last + 1
+		if @css.order.blank?
+			last = Stylesheet.order(:order).last
+			@css.order = last.order.to_i + 1
+		end
 	  if @css.save
       flash[:success] = "CSS saved successfully!"
       redirect_to stylesheets_path
