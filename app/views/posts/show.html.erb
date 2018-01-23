@@ -15,11 +15,11 @@
 
 <div id="single_post">
 	<h2 id="post_title">
-		<%= @post.title %>
+		<%= @post.title.html_safe %>
 	</h2>
 
 	<div class="post_body">
-  	<%= @post.body %>
+  	<%= @post.body.html_safe %>
 	</div>
 </div>
 

@@ -1,6 +1,20 @@
 <h1>Editing Stylesheet</h1>
 
 <%= render 'form', post: @css %>
-
+    
+<!--
+<script src="/assets/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+	var editor = ace.edit("editor");
+//	var path = "/assets/javascripts/ace/snippets";
+//	ace.config.set("workerPath", path);
+	editor.session.setMode("ace/mode/css");
+	var append = function(e) {
+  	e.preventDefault();
+		document.getElementById('stylesheet_body').value = editor.getValue();
+	};
+	$(document).on("submit", ".edit_stylesheet", append(e));	
+</script>
+-->
 <%= link_to 'Show', @css %> |
 <%= link_to 'Back', posts_path %>

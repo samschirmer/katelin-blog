@@ -32,6 +32,16 @@ class PostsController < ApplicationController
 		@post = Post.find(params[:id])
 	end
 
+	def update
+		@post = Post.find(params[:id])
+	  if @post.update_attributes(post_params)
+      flash[:success] = "Post saved successfully!"
+      redirect_to posts_path
+	  else 
+      flash[:success] = @post.errors.full_messages
+	  end	
+	end
+
 	def destroy
 		# hack to account for slugs
 		id = params[:id].split('-')[0]

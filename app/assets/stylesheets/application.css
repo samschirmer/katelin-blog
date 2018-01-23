@@ -13,3 +13,22 @@
  *= require_tree .
  *= require_self
  */
+
+html {
+  overflow-y: scroll;
+}
+
+html, body {
+  overflow-x: hidden;
+	min-height: 100%;
+}
+
+form .edit_post {
+	min-height: 100%;
+}
+
+.ace_editor, #editor, .ace_text-input, textarea#post_body, textarea#stylesheet_body, div#stylesheet_body {
+	min-height: 500px;
+}
+
+

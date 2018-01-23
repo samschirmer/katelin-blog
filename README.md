@@ -6,5 +6,8 @@ Allows for creation and reordering of raw CSS stylesheets from the web-facing ad
 
 Uses Devise for admin authentication. 
 
-Todo: add tagging for posts and recaptcha for commenters. 
+Todo: 
+- add tagging for posts and recaptcha for commenters 
+- add pagination
+- add monthly archive
 
