@@ -10,4 +10,4 @@ Todo:
 - add tagging for posts and recaptcha for commenters 
 - add pagination
 - add monthly archive
-
+- add portfolio and set root route there
