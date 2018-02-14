@@ -16236,3 +16236,584 @@ Processing by PostsController#index as HTML
 Completed 200 OK in 55ms (Views: 51.4ms | ActiveRecord: 0.9ms)
 
 
+Started GET "/" for 127.0.0.1 at 2018-02-13 23:01:09 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT p.id, p.created_at, p.title, p.body, IFNULL(c.count,0) AS num_comments, IFNULL(c2.count,0) AS num_ua FROM posts AS p LEFT JOIN (SELECT count(*) AS count, post_id FROM comments WHERE IFNULL(deleted, 0) = 0 AND IFNULL(approval, 0) = 1) AS c ON c.post_id = p.id LEFT JOIN (SELECT count(*) AS count, post_id FROM comments WHERE IFNULL(deleted,0) = 0 AND IFNULL(approval,0) = 0) AS c2 ON c2.post_id = p.id GROUP BY p.id, p.created_at, p.title, p.body ORDER BY p.created_at DESC[0m
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (227.1ms)
+  [1m[36mStylesheet Load (0.5ms)[0m  [1m[34mSELECT "stylesheets".* FROM "stylesheets" WHERE "stylesheets"."active" = ? ORDER BY "stylesheets"."order" ASC[0m  [["active", 1]]
+  Rendered layouts/_head.html.erb (3309.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 3593ms (Views: 3564.4ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/posts/13-new-post" for 127.0.0.1 at 2018-02-13 23:01:20 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"13-new-post"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/_comment_form.html.erb (44.4ms)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 13]]
+  Rendered posts/show.html.erb within layouts/application (49.0ms)
+  [1m[36mStylesheet Load (0.1ms)[0m  [1m[34mSELECT "stylesheets".* FROM "stylesheets" WHERE "stylesheets"."active" = ? ORDER BY "stylesheets"."order" ASC[0m  [["active", 1]]
+  Rendered layouts/_head.html.erb (19.8ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 98ms (Views: 81.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-02-13 23:01:25 -0600
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT p.id, p.created_at, p.title, p.body, IFNULL(c.count,0) AS num_comments, IFNULL(c2.count,0) AS num_ua FROM posts AS p LEFT JOIN (SELECT count(*) AS count, post_id FROM comments WHERE IFNULL(deleted, 0) = 0 AND IFNULL(approval, 0) = 1) AS c ON c.post_id = p.id LEFT JOIN (SELECT count(*) AS count, post_id FROM comments WHERE IFNULL(deleted,0) = 0 AND IFNULL(approval,0) = 0) AS c2 ON c2.post_id = p.id GROUP BY p.id, p.created_at, p.title, p.body ORDER BY p.created_at DESC[0m
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (2.1ms)
+  [1m[36mStylesheet Load (0.2ms)[0m  [1m[34mSELECT "stylesheets".* FROM "stylesheets" WHERE "stylesheets"."active" = ? ORDER BY "stylesheets"."order" ASC[0m  [["active", 1]]
+  Rendered layouts/_head.html.erb (26.0ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 45ms (Views: 41.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/posts/10-this-is-all-about-my-day" for 127.0.0.1 at 2018-02-13 23:04:50 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"10-this-is-all-about-my-day"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/_comment_form.html.erb (5.6ms)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 10]]
+  Rendered posts/show.html.erb within layouts/application (10.1ms)
+  [1m[36mStylesheet Load (0.2ms)[0m  [1m[34mSELECT "stylesheets".* FROM "stylesheets" WHERE "stylesheets"."active" = ? ORDER BY "stylesheets"."order" ASC[0m  [["active", 1]]
+  Rendered layouts/_head.html.erb (32.3ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 61ms (Views: 55.8ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-02-13 23:05:01 -0600
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT p.id, p.created_at, p.title, p.body, IFNULL(c.count,0) AS num_comments, IFNULL(c2.count,0) AS num_ua FROM posts AS p LEFT JOIN (SELECT count(*) AS count, post_id FROM comments WHERE IFNULL(deleted, 0) = 0 AND IFNULL(approval, 0) = 1) AS c ON c.post_id = p.id LEFT JOIN (SELECT count(*) AS count, post_id FROM comments WHERE IFNULL(deleted,0) = 0 AND IFNULL(approval,0) = 0) AS c2 ON c2.post_id = p.id GROUP BY p.id, p.created_at, p.title, p.body ORDER BY p.created_at DESC[0m
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (3.1ms)
+  [1m[36mStylesheet Load (0.2ms)[0m  [1m[34mSELECT "stylesheets".* FROM "stylesheets" WHERE "stylesheets"."active" = ? ORDER BY "stylesheets"."order" ASC[0m  [["active", 1]]
+  Rendered layouts/_head.html.erb (31.7ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 53ms (Views: 49.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/admins/sign_in" for 127.0.0.1 at 2018-02-13 23:07:22 -0600
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (23.8ms)
+  [1m[36mStylesheet Load (0.2ms)[0m  [1m[34mSELECT "stylesheets".* FROM "stylesheets" WHERE "stylesheets"."active" = ? ORDER BY "stylesheets"."order" ASC[0m  [["active", 1]]
+  Rendered layouts/_head.html.erb (34.1ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 120ms (Views: 85.1ms | ActiveRecord: 2.4ms)
+
+
+Started POST "/admins/sign_in" for 127.0.0.1 at 2018-02-13 23:07:38 -0600
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"AtnpD8C0bNQBdn5M+SLi8Xehc1DSZ0/qltS3c4GmGiV9uAU5OAoLcQ/VWxCYT2MdJaZaO/foDINoxsdi9eAYvw==", "admin"=>{"email"=>"samschirmer@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mAdmin Load (0.6ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."email" = ? ORDER BY "admins"."id" ASC LIMIT ?[0m  [["email", "samschirmer@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "admins" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "admins"."id" = ?[0m  [["current_sign_in_at", "2018-02-14 05:07:38.926906"], ["last_sign_in_at", "2018-01-23 03:31:18.140614"], ["sign_in_count", 17], ["updated_at", "2018-02-14 05:07:38.929917"], ["id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 172ms (ActiveRecord: 1.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-02-13 23:07:38 -0600
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT p.id, p.created_at, p.title, p.body, IFNULL(c.count,0) AS num_comments, IFNULL(c2.count,0) AS num_ua FROM posts AS p LEFT JOIN (SELECT count(*) AS count, post_id FROM comments WHERE IFNULL(deleted, 0) = 0 AND IFNULL(approval, 0) = 1) AS c ON c.post_id = p.id LEFT JOIN (SELECT count(*) AS count, post_id FROM comments WHERE IFNULL(deleted,0) = 0 AND IFNULL(approval,0) = 0) AS c2 ON c2.post_id = p.id GROUP BY p.id, p.created_at, p.title, p.body ORDER BY p.created_at DESC[0m
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mAdmin Load (0.2ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? ORDER BY "admins"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.erb within layouts/application (3.1ms)
+  [1m[36mStylesheet Load (0.1ms)[0m  [1m[34mSELECT "stylesheets".* FROM "stylesheets" WHERE "stylesheets"."active" = ? ORDER BY "stylesheets"."order" ASC[0m  [["active", 1]]
+  Rendered layouts/_head.html.erb (31.1ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 53ms (Views: 48.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2018-02-13 23:07:45 -0600
+Processing by PostsController#new as HTML
+  [1m[36mAdmin Load (0.3ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? ORDER BY "admins"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (40.5ms)
+  Rendered posts/new.html.erb within layouts/application (42.9ms)
+  [1m[36mStylesheet Load (0.1ms)[0m  [1m[34mSELECT "stylesheets".* FROM "stylesheets" WHERE "stylesheets"."active" = ? ORDER BY "stylesheets"."order" ASC[0m  [["active", 1]]
+  Rendered layouts/_head.html.erb (22.8ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 85ms (Views: 79.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-02-13 23:08:22 -0600
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT p.id, p.created_at, p.title, p.body, IFNULL(c.count,0) AS num_comments, IFNULL(c2.count,0) AS num_ua FROM posts AS p LEFT JOIN (SELECT count(*) AS count, post_id FROM comments WHERE IFNULL(deleted, 0) = 0 AND IFNULL(approval, 0) = 1) AS c ON c.post_id = p.id LEFT JOIN (SELECT count(*) AS count, post_id FROM comments WHERE IFNULL(deleted,0) = 0 AND IFNULL(approval,0) = 0) AS c2 ON c2.post_id = p.id GROUP BY p.id, p.created_at, p.title, p.body ORDER BY p.created_at DESC[0m
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mAdmin Load (0.9ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? ORDER BY "admins"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.erb within layouts/application (4.9ms)
+  [1m[36mStylesheet Load (0.2ms)[0m  [1m[34mSELECT "stylesheets".* FROM "stylesheets" WHERE "stylesheets"."active" = ? ORDER BY "stylesheets"."order" ASC[0m  [["active", 1]]
+  Rendered layouts/_head.html.erb (25.7ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 48ms (Views: 43.0ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/admins/edit" for 127.0.0.1 at 2018-02-13 23:08:29 -0600
+Processing by DeviseInvitable::RegistrationsController#edit as HTML
+  [1m[36mAdmin Load (2.3ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? ORDER BY "admins"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering devise/registrations/edit.html.erb within layouts/application
+  Rendered devise/registrations/edit.html.erb within layouts/application (13.9ms)
+  [1m[36mStylesheet Load (0.8ms)[0m  [1m[34mSELECT "stylesheets".* FROM "stylesheets" WHERE "stylesheets"."active" = ? ORDER BY "stylesheets"."order" ASC[0m  [["active", 1]]
+  Rendered layouts/_head.html.erb (31.6ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 87ms (Views: 82.2ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/stylesheets" for 127.0.0.1 at 2018-02-13 23:08:33 -0600
+Processing by StylesheetsController#index as HTML
+  [1m[36mAdmin Load (0.1ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? ORDER BY "admins"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering stylesheets/index.html.erb within layouts/application
+  [1m[36mStylesheet Load (0.7ms)[0m  [1m[34mSELECT "stylesheets".* FROM "stylesheets" ORDER BY "stylesheets"."order" ASC[0m
+  Rendered stylesheets/index.html.erb within layouts/application (4.8ms)
+  [1m[36mStylesheet Load (0.1ms)[0m  [1m[34mSELECT "stylesheets".* FROM "stylesheets" WHERE "stylesheets"."active" = ? ORDER BY "stylesheets"."order" ASC[0m  [["active", 1]]
+  Rendered layouts/_head.html.erb (36.0ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 59ms (Views: 53.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/toggle/2" for 127.0.0.1 at 2018-02-13 23:08:46 -0600
+Processing by StylesheetsController#toggle as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAdmin Load (0.2ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? ORDER BY "admins"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mStylesheet Load (0.1ms)[0m  [1m[34mSELECT  "stylesheets".* FROM "stylesheets" WHERE "stylesheets"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAdmin Load (0.1ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "stylesheets" SET "active" = ?, "updated_at" = ? WHERE "stylesheets"."id" = ?[0m  [["active", 0], ["updated_at", "2018-02-14 05:08:46.977271"], ["id", 2]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+DEPRECATION WARNING: `redirect_to :back` is deprecated and will be removed from Rails 5.1. Please use `redirect_back(fallback_location: fallback_location)` where `fallback_location` represents the location to use if the request has no HTTP referer information. (called from toggle at /Users/katelin/Desktop/Katelin/Website/katelin-blog/app/controllers/stylesheets_controller.rb:61)
+Redirected to http://localhost:3000/stylesheets
+Completed 302 Found in 27ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/stylesheets" for 127.0.0.1 at 2018-02-13 23:08:46 -0600
+Processing by StylesheetsController#index as HTML
+  [1m[36mAdmin Load (0.2ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? ORDER BY "admins"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering stylesheets/index.html.erb within layouts/application
+  [1m[36mStylesheet Load (0.1ms)[0m  [1m[34mSELECT "stylesheets".* FROM "stylesheets" ORDER BY "stylesheets"."order" ASC[0m
+  Rendered stylesheets/index.html.erb within layouts/application (2.4ms)
+  [1m[36mStylesheet Load (0.1ms)[0m  [1m[34mSELECT "stylesheets".* FROM "stylesheets" WHERE "stylesheets"."active" = ? ORDER BY "stylesheets"."order" ASC[0m  [["active", 1]]
+  Rendered layouts/_head.html.erb (29.8ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 51ms (Views: 46.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/stylesheets" for 127.0.0.1 at 2018-02-13 23:08:50 -0600
+Processing by StylesheetsController#index as HTML
+  [1m[36mAdmin Load (0.2ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? ORDER BY "admins"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering stylesheets/index.html.erb within layouts/application
+  [1m[36mStylesheet Load (0.1ms)[0m  [1m[34mSELECT "stylesheets".* FROM "stylesheets" ORDER BY "stylesheets"."order" ASC[0m
+  Rendered stylesheets/index.html.erb within layouts/application (2.1ms)
+  [1m[36mStylesheet Load (0.1ms)[0m  [1m[34mSELECT "stylesheets".* FROM "stylesheets" WHERE "stylesheets"."active" = ? ORDER BY "stylesheets"."order" ASC[0m  [["active", 1]]
+  Rendered layouts/_head.html.erb (31.2ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 48ms (Views: 44.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/toggle/2" for 127.0.0.1 at 2018-02-13 23:08:53 -0600
+Processing by StylesheetsController#toggle as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAdmin Load (0.3ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? ORDER BY "admins"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mStylesheet Load (0.1ms)[0m  [1m[34mSELECT  "stylesheets".* FROM "stylesheets" WHERE "stylesheets"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAdmin Load (0.1ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "stylesheets" SET "active" = ?, "updated_at" = ? WHERE "stylesheets"."id" = ?[0m  [["active", 1], ["updated_at", "2018-02-14 05:08:53.590256"], ["id", 2]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+DEPRECATION WARNING: `redirect_to :back` is deprecated and will be removed from Rails 5.1. Please use `redirect_back(fallback_location: fallback_location)` where `fallback_location` represents the location to use if the request has no HTTP referer information. (called from toggle at /Users/katelin/Desktop/Katelin/Website/katelin-blog/app/controllers/stylesheets_controller.rb:61)
+Redirected to http://localhost:3000/stylesheets
+Completed 302 Found in 10ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/stylesheets" for 127.0.0.1 at 2018-02-13 23:08:53 -0600
+Processing by StylesheetsController#index as HTML
+  [1m[36mAdmin Load (0.2ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? ORDER BY "admins"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering stylesheets/index.html.erb within layouts/application
+  [1m[36mStylesheet Load (0.1ms)[0m  [1m[34mSELECT "stylesheets".* FROM "stylesheets" ORDER BY "stylesheets"."order" ASC[0m
+  Rendered stylesheets/index.html.erb within layouts/application (2.5ms)
+  [1m[36mStylesheet Load (0.2ms)[0m  [1m[34mSELECT "stylesheets".* FROM "stylesheets" WHERE "stylesheets"."active" = ? ORDER BY "stylesheets"."order" ASC[0m  [["active", 1]]
+  Rendered layouts/_head.html.erb (25.1ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 43ms (Views: 40.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/stylesheets" for 127.0.0.1 at 2018-02-13 23:08:54 -0600
+Processing by StylesheetsController#index as HTML
+  [1m[36mAdmin Load (0.2ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? ORDER BY "admins"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering stylesheets/index.html.erb within layouts/application
+  [1m[36mStylesheet Load (0.1ms)[0m  [1m[34mSELECT "stylesheets".* FROM "stylesheets" ORDER BY "stylesheets"."order" ASC[0m
+  Rendered stylesheets/index.html.erb within layouts/application (2.2ms)
+  [1m[36mStylesheet Load (0.1ms)[0m  [1m[34mSELECT "stylesheets".* FROM "stylesheets" WHERE "stylesheets"."active" = ? ORDER BY "stylesheets"."order" ASC[0m  [["active", 1]]
+  Rendered layouts/_head.html.erb (35.3ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 53ms (Views: 49.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-02-13 23:10:35 -0600
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT p.id, p.created_at, p.title, p.body, IFNULL(c.count,0) AS num_comments, IFNULL(c2.count,0) AS num_ua FROM posts AS p LEFT JOIN (SELECT count(*) AS count, post_id FROM comments WHERE IFNULL(deleted, 0) = 0 AND IFNULL(approval, 0) = 1) AS c ON c.post_id = p.id LEFT JOIN (SELECT count(*) AS count, post_id FROM comments WHERE IFNULL(deleted,0) = 0 AND IFNULL(approval,0) = 0) AS c2 ON c2.post_id = p.id GROUP BY p.id, p.created_at, p.title, p.body ORDER BY p.created_at DESC[0m
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mAdmin Load (0.2ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? ORDER BY "admins"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.erb within layouts/application (4.0ms)
+  [1m[36mStylesheet Load (0.7ms)[0m  [1m[34mSELECT "stylesheets".* FROM "stylesheets" WHERE "stylesheets"."active" = ? ORDER BY "stylesheets"."order" ASC[0m  [["active", 1]]
+  Rendered layouts/_head.html.erb (31.5ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 52ms (Views: 47.0ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/posts/10-this-is-all-about-my-day" for 127.0.0.1 at 2018-02-13 23:13:59 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"10-this-is-all-about-my-day"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mAdmin Load (0.1ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? ORDER BY "admins"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/_comment_form.html.erb (6.7ms)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 10]]
+  Rendered posts/show.html.erb within layouts/application (15.9ms)
+  [1m[36mStylesheet Load (0.2ms)[0m  [1m[34mSELECT "stylesheets".* FROM "stylesheets" WHERE "stylesheets"."active" = ? ORDER BY "stylesheets"."order" ASC[0m  [["active", 1]]
+  Rendered layouts/_head.html.erb (28.1ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 61ms (Views: 56.4ms | ActiveRecord: 0.8ms)
+
+
+Started DELETE "/comments/11" for 127.0.0.1 at 2018-02-13 23:14:06 -0600
+Processing by CommentsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"2En/p0MzQbIa3jNHLkdy13YXlC3Sx/8E0HZEZ5t5fLTij4yjM0IyjmPovgT1lPkorp+99mSpe6HRCORt/pYz9A==", "id"=>"11"}
+  [1m[36mAdmin Load (0.2ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? ORDER BY "admins"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "comments" WHERE "comments"."id" = ?[0m  [["id", 11]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/posts/10
+Completed 302 Found in 16ms (ActiveRecord: 2.3ms)
+
+
+Started GET "/posts/10" for 127.0.0.1 at 2018-02-13 23:14:06 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mAdmin Load (0.3ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? ORDER BY "admins"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/_comment_form.html.erb (12.6ms)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 10]]
+  Rendered posts/show.html.erb within layouts/application (20.2ms)
+  [1m[36mStylesheet Load (0.2ms)[0m  [1m[34mSELECT "stylesheets".* FROM "stylesheets" WHERE "stylesheets"."active" = ? ORDER BY "stylesheets"."order" ASC[0m  [["active", 1]]
+  Rendered layouts/_head.html.erb (24.5ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 69ms (Views: 63.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/comments/approve/13" for 127.0.0.1 at 2018-02-13 23:14:09 -0600
+Processing by CommentsController#approve as HTML
+  Parameters: {"authenticity_token"=>"YnLnzppC8CbvUXLGP08me7qjlEgu3Xlu9eTFshzNj4VYtJTK6jODGpZn/4XknK2EYiu9k5iz/cv0mmW4eSLAxQ==", "id"=>"13"}
+  [1m[36mAdmin Load (0.2ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? ORDER BY "admins"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "comments" SET "approval" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["approval", 1], ["updated_at", "2018-02-14 05:14:09.174569"], ["id", 13]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/posts/10
+Completed 302 Found in 11ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/posts/10" for 127.0.0.1 at 2018-02-13 23:14:09 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mAdmin Load (0.1ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? ORDER BY "admins"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/_comment_form.html.erb (10.2ms)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 10]]
+  Rendered posts/show.html.erb within layouts/application (16.0ms)
+  [1m[36mStylesheet Load (0.1ms)[0m  [1m[34mSELECT "stylesheets".* FROM "stylesheets" WHERE "stylesheets"."active" = ? ORDER BY "stylesheets"."order" ASC[0m  [["active", 1]]
+  Rendered layouts/_head.html.erb (20.8ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 51ms (Views: 47.9ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/comments/12" for 127.0.0.1 at 2018-02-13 23:14:15 -0600
+Processing by CommentsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"rKA5/YlLkWNBSHNts9yBBr2E2TFBS1DK3K4RZNn8cSaWZkr5+TriXzh+/i5oDwr5ZQzw6vcl1G/d0LFuvBM+Zg==", "id"=>"12"}
+  [1m[36mAdmin Load (0.1ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? ORDER BY "admins"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[31mDELETE FROM "comments" WHERE "comments"."id" = ?[0m  [["id", 12]]
+  [1m[35m (0.4ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/posts/10
+Completed 302 Found in 7ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/posts/10" for 127.0.0.1 at 2018-02-13 23:14:15 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mAdmin Load (0.1ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? ORDER BY "admins"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/_comment_form.html.erb (14.9ms)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 10]]
+  Rendered posts/show.html.erb within layouts/application (22.6ms)
+  [1m[36mStylesheet Load (0.2ms)[0m  [1m[34mSELECT "stylesheets".* FROM "stylesheets" WHERE "stylesheets"."active" = ? ORDER BY "stylesheets"."order" ASC[0m  [["active", 1]]
+  Rendered layouts/_head.html.erb (24.7ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 64ms (Views: 60.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/posts/10-this-is-all-about-my-day/edit" for 127.0.0.1 at 2018-02-13 23:14:20 -0600
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"10-this-is-all-about-my-day"}
+  [1m[36mAdmin Load (0.2ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? ORDER BY "admins"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  Rendering posts/edit.html.erb within layouts/application
+  Rendered posts/_form.html.erb (14.0ms)
+  Rendered posts/edit.html.erb within layouts/application (16.8ms)
+  [1m[36mStylesheet Load (0.2ms)[0m  [1m[34mSELECT "stylesheets".* FROM "stylesheets" WHERE "stylesheets"."active" = ? ORDER BY "stylesheets"."order" ASC[0m  [["active", 1]]
+  Rendered layouts/_head.html.erb (25.1ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 64ms (Views: 58.5ms | ActiveRecord: 0.4ms)
+
+
+Started PATCH "/posts/10-this-is-all-about-my-day" for 127.0.0.1 at 2018-02-13 23:15:36 -0600
+Processing by PostsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8rPdyRAI2Ahrt7A+6ZhEj9U/o9f5Huepzk8hNdLnQGbIda7NYHmrNBKBPX0yS89wDbeKDE9wYwzPMYE/twgPJg==", "post"=>{"title"=>"This is all about my day", "body"=>"<div class=\"row\">\r\n<div class=\"col-xs-12 col-md-12\">\r\n<p id=\"this-is-unique\">This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. </p>\r\n\r\n<p> This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph.</p> \r\n</div>\r\n<div class=\"col-xs-12 col-md-12\">\r\n<img class=\"img img-responsive\" src=\"https://vetstreet.brightspotcdn.com/dims4/default/ed822f6/2147483647/thumbnail/645x380/quality/90/?url=https%3A%2F%2Fvetstreet-brightspot.s3.amazonaws.com%2F75%2F371580ca7a11e0ad9e12313817c323%2Ffile%2FBeagle-1-645mk062311.jpg\">\r\n</div>\r\n</div>"}, "commit"=>"Update Post", "id"=>"10-this-is-all-about-my-day"}
+  [1m[36mAdmin Load (0.2ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? ORDER BY "admins"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "posts" SET "body" = ?, "updated_at" = ? WHERE "posts"."id" = ?[0m  [["body", "<div class=\"row\">\r\n<div class=\"col-xs-12 col-md-12\">\r\n<p id=\"this-is-unique\">This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. </p>\r\n\r\n<p> This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph.</p> \r\n</div>\r\n<div class=\"col-xs-12 col-md-12\">\r\n<img class=\"img img-responsive\" src=\"https://vetstreet.brightspotcdn.com/dims4/default/ed822f6/2147483647/thumbnail/645x380/quality/90/?url=https%3A%2F%2Fvetstreet-brightspot.s3.amazonaws.com%2F75%2F371580ca7a11e0ad9e12313817c323%2Ffile%2FBeagle-1-645mk062311.jpg\">\r\n</div>\r\n</div>"], ["updated_at", "2018-02-14 05:15:36.251425"], ["id", 10]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/posts
+Completed 302 Found in 10ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-02-13 23:15:36 -0600
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT p.id, p.created_at, p.title, p.body, IFNULL(c.count,0) AS num_comments, IFNULL(c2.count,0) AS num_ua FROM posts AS p LEFT JOIN (SELECT count(*) AS count, post_id FROM comments WHERE IFNULL(deleted, 0) = 0 AND IFNULL(approval, 0) = 1) AS c ON c.post_id = p.id LEFT JOIN (SELECT count(*) AS count, post_id FROM comments WHERE IFNULL(deleted,0) = 0 AND IFNULL(approval,0) = 0) AS c2 ON c2.post_id = p.id GROUP BY p.id, p.created_at, p.title, p.body ORDER BY p.created_at DESC[0m
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mAdmin Load (0.1ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? ORDER BY "admins"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.erb within layouts/application (3.2ms)
+  [1m[36mStylesheet Load (0.1ms)[0m  [1m[34mSELECT "stylesheets".* FROM "stylesheets" WHERE "stylesheets"."active" = ? ORDER BY "stylesheets"."order" ASC[0m  [["active", 1]]
+  Rendered layouts/_head.html.erb (23.1ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 42ms (Views: 38.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/posts/10-this-is-all-about-my-day" for 127.0.0.1 at 2018-02-13 23:15:43 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"10-this-is-all-about-my-day"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mAdmin Load (0.1ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? ORDER BY "admins"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/_comment_form.html.erb (6.5ms)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 10]]
+  Rendered posts/show.html.erb within layouts/application (13.5ms)
+  [1m[36mStylesheet Load (2.5ms)[0m  [1m[34mSELECT "stylesheets".* FROM "stylesheets" WHERE "stylesheets"."active" = ? ORDER BY "stylesheets"."order" ASC[0m  [["active", 1]]
+  Rendered layouts/_head.html.erb (30.1ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 59ms (Views: 52.9ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/posts/10-this-is-all-about-my-day/edit" for 127.0.0.1 at 2018-02-13 23:15:45 -0600
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"10-this-is-all-about-my-day"}
+  [1m[36mAdmin Load (0.2ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? ORDER BY "admins"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  Rendering posts/edit.html.erb within layouts/application
+  Rendered posts/_form.html.erb (4.7ms)
+  Rendered posts/edit.html.erb within layouts/application (7.1ms)
+  [1m[36mStylesheet Load (0.2ms)[0m  [1m[34mSELECT "stylesheets".* FROM "stylesheets" WHERE "stylesheets"."active" = ? ORDER BY "stylesheets"."order" ASC[0m  [["active", 1]]
+  Rendered layouts/_head.html.erb (26.9ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 53ms (Views: 46.3ms | ActiveRecord: 0.5ms)
+
+
+Started PATCH "/posts/10-this-is-all-about-my-day" for 127.0.0.1 at 2018-02-13 23:16:06 -0600
+Processing by PostsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"2OSe+k3nSt8PkPiAmXNVsEqriq5Bn9WEuT2VPmI9nh3iIu3+PZY543amdcNCoN5PkiOjdffxUSG4QzU0B9LRXQ==", "post"=>{"title"=>"This is all about my day", "body"=>"<div class=\"row\">\r\n<div class=\"col-xs-12 col-md-4\">\r\n<p id=\"this-is-unique\">This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. </p>\r\n\r\n<p> This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph.</p> \r\n</div>\r\n<div class=\"col-xs-12 col-md-4\">\r\n<img id=\"beagle\" class=\"img img-responsive\" src=\"https://vetstreet.brightspotcdn.com/dims4/default/ed822f6/2147483647/thumbnail/645x380/quality/90/?url=https%3A%2F%2Fvetstreet-brightspot.s3.amazonaws.com%2F75%2F371580ca7a11e0ad9e12313817c323%2Ffile%2FBeagle-1-645mk062311.jpg\">\r\n</div>\r\n</div>"}, "commit"=>"Update Post", "id"=>"10-this-is-all-about-my-day"}
+  [1m[36mAdmin Load (0.1ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? ORDER BY "admins"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "posts" SET "body" = ?, "updated_at" = ? WHERE "posts"."id" = ?[0m  [["body", "<div class=\"row\">\r\n<div class=\"col-xs-12 col-md-4\">\r\n<p id=\"this-is-unique\">This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. </p>\r\n\r\n<p> This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph. This is another paragraph.</p> \r\n</div>\r\n<div class=\"col-xs-12 col-md-4\">\r\n<img id=\"beagle\" class=\"img img-responsive\" src=\"https://vetstreet.brightspotcdn.com/dims4/default/ed822f6/2147483647/thumbnail/645x380/quality/90/?url=https%3A%2F%2Fvetstreet-brightspot.s3.amazonaws.com%2F75%2F371580ca7a11e0ad9e12313817c323%2Ffile%2FBeagle-1-645mk062311.jpg\">\r\n</div>\r\n</div>"], ["updated_at", "2018-02-14 05:16:06.289440"], ["id", 10]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/posts
+Completed 302 Found in 7ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-02-13 23:16:06 -0600
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT p.id, p.created_at, p.title, p.body, IFNULL(c.count,0) AS num_comments, IFNULL(c2.count,0) AS num_ua FROM posts AS p LEFT JOIN (SELECT count(*) AS count, post_id FROM comments WHERE IFNULL(deleted, 0) = 0 AND IFNULL(approval, 0) = 1) AS c ON c.post_id = p.id LEFT JOIN (SELECT count(*) AS count, post_id FROM comments WHERE IFNULL(deleted,0) = 0 AND IFNULL(approval,0) = 0) AS c2 ON c2.post_id = p.id GROUP BY p.id, p.created_at, p.title, p.body ORDER BY p.created_at DESC[0m
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mAdmin Load (0.2ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? ORDER BY "admins"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.erb within layouts/application (3.5ms)
+  [1m[36mStylesheet Load (0.2ms)[0m  [1m[34mSELECT "stylesheets".* FROM "stylesheets" WHERE "stylesheets"."active" = ? ORDER BY "stylesheets"."order" ASC[0m  [["active", 1]]
+  Rendered layouts/_head.html.erb (23.5ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 44ms (Views: 40.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-02-13 23:17:48 -0600
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT p.id, p.created_at, p.title, p.body, IFNULL(c.count,0) AS num_comments, IFNULL(c2.count,0) AS num_ua FROM posts AS p LEFT JOIN (SELECT count(*) AS count, post_id FROM comments WHERE IFNULL(deleted, 0) = 0 AND IFNULL(approval, 0) = 1) AS c ON c.post_id = p.id LEFT JOIN (SELECT count(*) AS count, post_id FROM comments WHERE IFNULL(deleted,0) = 0 AND IFNULL(approval,0) = 0) AS c2 ON c2.post_id = p.id GROUP BY p.id, p.created_at, p.title, p.body ORDER BY p.created_at DESC[0m
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mAdmin Load (0.1ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? ORDER BY "admins"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.erb within layouts/application (3.0ms)
+  [1m[36mStylesheet Load (0.2ms)[0m  [1m[34mSELECT "stylesheets".* FROM "stylesheets" WHERE "stylesheets"."active" = ? ORDER BY "stylesheets"."order" ASC[0m  [["active", 1]]
+  Rendered layouts/_head.html.erb (256.5ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 276ms (Views: 273.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-02-13 23:17:50 -0600
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT p.id, p.created_at, p.title, p.body, IFNULL(c.count,0) AS num_comments, IFNULL(c2.count,0) AS num_ua FROM posts AS p LEFT JOIN (SELECT count(*) AS count, post_id FROM comments WHERE IFNULL(deleted, 0) = 0 AND IFNULL(approval, 0) = 1) AS c ON c.post_id = p.id LEFT JOIN (SELECT count(*) AS count, post_id FROM comments WHERE IFNULL(deleted,0) = 0 AND IFNULL(approval,0) = 0) AS c2 ON c2.post_id = p.id GROUP BY p.id, p.created_at, p.title, p.body ORDER BY p.created_at DESC[0m
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mAdmin Load (0.3ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? ORDER BY "admins"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.erb within layouts/application (4.5ms)
+  [1m[36mStylesheet Load (0.2ms)[0m  [1m[34mSELECT "stylesheets".* FROM "stylesheets" WHERE "stylesheets"."active" = ? ORDER BY "stylesheets"."order" ASC[0m  [["active", 1]]
+  Rendered layouts/_head.html.erb (32.3ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 54ms (Views: 49.7ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-02-13 23:22:18 -0600
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT p.id, p.created_at, p.title, p.body, IFNULL(c.count,0) AS num_comments, IFNULL(c2.count,0) AS num_ua FROM posts AS p LEFT JOIN (SELECT count(*) AS count, post_id FROM comments WHERE IFNULL(deleted, 0) = 0 AND IFNULL(approval, 0) = 1) AS c ON c.post_id = p.id LEFT JOIN (SELECT count(*) AS count, post_id FROM comments WHERE IFNULL(deleted,0) = 0 AND IFNULL(approval,0) = 0) AS c2 ON c2.post_id = p.id GROUP BY p.id, p.created_at, p.title, p.body ORDER BY p.created_at DESC[0m
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mAdmin Load (0.1ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? ORDER BY "admins"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.erb within layouts/application (3.5ms)
+  [1m[36mStylesheet Load (0.2ms)[0m  [1m[34mSELECT "stylesheets".* FROM "stylesheets" WHERE "stylesheets"."active" = ? ORDER BY "stylesheets"."order" ASC[0m  [["active", 1]]
+  Rendered layouts/_head.html.erb (1322.3ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 1352ms (Views: 1347.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-02-13 23:22:35 -0600
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (2.7ms)[0m  [1m[34mSELECT p.id, p.created_at, p.title, p.body, IFNULL(c.count,0) AS num_comments, IFNULL(c2.count,0) AS num_ua FROM posts AS p LEFT JOIN (SELECT count(*) AS count, post_id FROM comments WHERE IFNULL(deleted, 0) = 0 AND IFNULL(approval, 0) = 1) AS c ON c.post_id = p.id LEFT JOIN (SELECT count(*) AS count, post_id FROM comments WHERE IFNULL(deleted,0) = 0 AND IFNULL(approval,0) = 0) AS c2 ON c2.post_id = p.id GROUP BY p.id, p.created_at, p.title, p.body ORDER BY p.created_at DESC[0m
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mAdmin Load (0.2ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? ORDER BY "admins"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.erb within layouts/application (3.7ms)
+  [1m[36mStylesheet Load (0.2ms)[0m  [1m[34mSELECT "stylesheets".* FROM "stylesheets" WHERE "stylesheets"."active" = ? ORDER BY "stylesheets"."order" ASC[0m  [["active", 1]]
+  Rendered layouts/_head.html.erb (235.2ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 258ms (Views: 252.0ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-02-13 23:23:15 -0600
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (1.7ms)[0m  [1m[34mSELECT p.id, p.created_at, p.title, p.body, IFNULL(c.count,0) AS num_comments, IFNULL(c2.count,0) AS num_ua FROM posts AS p LEFT JOIN (SELECT count(*) AS count, post_id FROM comments WHERE IFNULL(deleted, 0) = 0 AND IFNULL(approval, 0) = 1) AS c ON c.post_id = p.id LEFT JOIN (SELECT count(*) AS count, post_id FROM comments WHERE IFNULL(deleted,0) = 0 AND IFNULL(approval,0) = 0) AS c2 ON c2.post_id = p.id GROUP BY p.id, p.created_at, p.title, p.body ORDER BY p.created_at DESC[0m
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mAdmin Load (0.1ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? ORDER BY "admins"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.erb within layouts/application (3.1ms)
+  [1m[36mStylesheet Load (0.2ms)[0m  [1m[34mSELECT "stylesheets".* FROM "stylesheets" WHERE "stylesheets"."active" = ? ORDER BY "stylesheets"."order" ASC[0m  [["active", 1]]
+  Rendered layouts/_head.html.erb (276.8ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 299ms (Views: 293.7ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-02-13 23:25:34 -0600
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT p.id, p.created_at, p.title, p.body, IFNULL(c.count,0) AS num_comments, IFNULL(c2.count,0) AS num_ua FROM posts AS p LEFT JOIN (SELECT count(*) AS count, post_id FROM comments WHERE IFNULL(deleted, 0) = 0 AND IFNULL(approval, 0) = 1) AS c ON c.post_id = p.id LEFT JOIN (SELECT count(*) AS count, post_id FROM comments WHERE IFNULL(deleted,0) = 0 AND IFNULL(approval,0) = 0) AS c2 ON c2.post_id = p.id GROUP BY p.id, p.created_at, p.title, p.body ORDER BY p.created_at DESC[0m
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mAdmin Load (0.1ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? ORDER BY "admins"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.erb within layouts/application (4.0ms)
+  [1m[36mStylesheet Load (0.2ms)[0m  [1m[34mSELECT "stylesheets".* FROM "stylesheets" WHERE "stylesheets"."active" = ? ORDER BY "stylesheets"."order" ASC[0m  [["active", 1]]
+  Rendered layouts/_head.html.erb (229.5ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 249ms (Views: 246.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-02-13 23:25:37 -0600
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT p.id, p.created_at, p.title, p.body, IFNULL(c.count,0) AS num_comments, IFNULL(c2.count,0) AS num_ua FROM posts AS p LEFT JOIN (SELECT count(*) AS count, post_id FROM comments WHERE IFNULL(deleted, 0) = 0 AND IFNULL(approval, 0) = 1) AS c ON c.post_id = p.id LEFT JOIN (SELECT count(*) AS count, post_id FROM comments WHERE IFNULL(deleted,0) = 0 AND IFNULL(approval,0) = 0) AS c2 ON c2.post_id = p.id GROUP BY p.id, p.created_at, p.title, p.body ORDER BY p.created_at DESC[0m
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mAdmin Load (0.1ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? ORDER BY "admins"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.erb within layouts/application (3.1ms)
+  [1m[36mStylesheet Load (0.2ms)[0m  [1m[34mSELECT "stylesheets".* FROM "stylesheets" WHERE "stylesheets"."active" = ? ORDER BY "stylesheets"."order" ASC[0m  [["active", 1]]
+  Rendered layouts/_head.html.erb (26.5ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 55ms (Views: 51.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-02-13 23:26:41 -0600
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT p.id, p.created_at, p.title, p.body, IFNULL(c.count,0) AS num_comments, IFNULL(c2.count,0) AS num_ua FROM posts AS p LEFT JOIN (SELECT count(*) AS count, post_id FROM comments WHERE IFNULL(deleted, 0) = 0 AND IFNULL(approval, 0) = 1) AS c ON c.post_id = p.id LEFT JOIN (SELECT count(*) AS count, post_id FROM comments WHERE IFNULL(deleted,0) = 0 AND IFNULL(approval,0) = 0) AS c2 ON c2.post_id = p.id GROUP BY p.id, p.created_at, p.title, p.body ORDER BY p.created_at DESC[0m
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mAdmin Load (0.2ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? ORDER BY "admins"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.erb within layouts/application (4.3ms)
+  [1m[36mStylesheet Load (0.2ms)[0m  [1m[34mSELECT "stylesheets".* FROM "stylesheets" WHERE "stylesheets"."active" = ? ORDER BY "stylesheets"."order" ASC[0m  [["active", 1]]
+  Rendered layouts/_head.html.erb (251.7ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 275ms (Views: 269.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-02-13 23:27:39 -0600
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT p.id, p.created_at, p.title, p.body, IFNULL(c.count,0) AS num_comments, IFNULL(c2.count,0) AS num_ua FROM posts AS p LEFT JOIN (SELECT count(*) AS count, post_id FROM comments WHERE IFNULL(deleted, 0) = 0 AND IFNULL(approval, 0) = 1) AS c ON c.post_id = p.id LEFT JOIN (SELECT count(*) AS count, post_id FROM comments WHERE IFNULL(deleted,0) = 0 AND IFNULL(approval,0) = 0) AS c2 ON c2.post_id = p.id GROUP BY p.id, p.created_at, p.title, p.body ORDER BY p.created_at DESC[0m
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mAdmin Load (0.1ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? ORDER BY "admins"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.erb within layouts/application (3.0ms)
+  Rendered layouts/_head.html.erb (9.4ms)
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 0.4ms)
+
+
+
+Sass::SyntaxError - Invalid CSS after "	background-color": expected ";", was ": white;":
+  app/assets/stylesheets/application.scss:29:in `'
+  app/views/layouts/_head.html.erb:8:in `_app_views_layouts__head_html_erb___1312520499018090418_70142348859000'
+  app/views/layouts/application.html.erb:4:in `_app_views_layouts_application_html_erb___25684722255192871_70142340556440'
+
+Started POST "/__better_errors/ef6dd7210d48c8b0/variables" for 127.0.0.1 at 2018-02-13 23:27:39 -0600
+  [1m[36mStylesheet Load (0.2ms)[0m  [1m[34mSELECT "stylesheets".* FROM "stylesheets" WHERE "stylesheets"."active" = ? ORDER BY "stylesheets"."order" ASC[0m  [["active", 1]]
+Started GET "/posts" for 127.0.0.1 at 2018-02-13 23:28:21 -0600
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT p.id, p.created_at, p.title, p.body, IFNULL(c.count,0) AS num_comments, IFNULL(c2.count,0) AS num_ua FROM posts AS p LEFT JOIN (SELECT count(*) AS count, post_id FROM comments WHERE IFNULL(deleted, 0) = 0 AND IFNULL(approval, 0) = 1) AS c ON c.post_id = p.id LEFT JOIN (SELECT count(*) AS count, post_id FROM comments WHERE IFNULL(deleted,0) = 0 AND IFNULL(approval,0) = 0) AS c2 ON c2.post_id = p.id GROUP BY p.id, p.created_at, p.title, p.body ORDER BY p.created_at DESC[0m
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mAdmin Load (0.2ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? ORDER BY "admins"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.erb within layouts/application (4.9ms)
+  [1m[36mStylesheet Load (0.2ms)[0m  [1m[34mSELECT "stylesheets".* FROM "stylesheets" WHERE "stylesheets"."active" = ? ORDER BY "stylesheets"."order" ASC[0m  [["active", 1]]
+  Rendered layouts/_head.html.erb (302.5ms)
+  Rendered layouts/_footer.html.erb (1.5ms)
+Completed 200 OK in 327ms (Views: 323.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-02-13 23:29:27 -0600
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT p.id, p.created_at, p.title, p.body, IFNULL(c.count,0) AS num_comments, IFNULL(c2.count,0) AS num_ua FROM posts AS p LEFT JOIN (SELECT count(*) AS count, post_id FROM comments WHERE IFNULL(deleted, 0) = 0 AND IFNULL(approval, 0) = 1) AS c ON c.post_id = p.id LEFT JOIN (SELECT count(*) AS count, post_id FROM comments WHERE IFNULL(deleted,0) = 0 AND IFNULL(approval,0) = 0) AS c2 ON c2.post_id = p.id GROUP BY p.id, p.created_at, p.title, p.body ORDER BY p.created_at DESC[0m
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mAdmin Load (0.1ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? ORDER BY "admins"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.erb within layouts/application (3.8ms)
+  [1m[36mStylesheet Load (0.3ms)[0m  [1m[34mSELECT "stylesheets".* FROM "stylesheets" WHERE "stylesheets"."active" = ? ORDER BY "stylesheets"."order" ASC[0m  [["active", 1]]
+  Rendered layouts/_head.html.erb (343.5ms)
+  Rendered layouts/_footer.html.erb (0.6ms)
+Completed 200 OK in 366ms (Views: 361.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-02-13 23:29:46 -0600
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT p.id, p.created_at, p.title, p.body, IFNULL(c.count,0) AS num_comments, IFNULL(c2.count,0) AS num_ua FROM posts AS p LEFT JOIN (SELECT count(*) AS count, post_id FROM comments WHERE IFNULL(deleted, 0) = 0 AND IFNULL(approval, 0) = 1) AS c ON c.post_id = p.id LEFT JOIN (SELECT count(*) AS count, post_id FROM comments WHERE IFNULL(deleted,0) = 0 AND IFNULL(approval,0) = 0) AS c2 ON c2.post_id = p.id GROUP BY p.id, p.created_at, p.title, p.body ORDER BY p.created_at DESC[0m
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mAdmin Load (0.2ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? ORDER BY "admins"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.erb within layouts/application (3.1ms)
+  [1m[36mStylesheet Load (0.2ms)[0m  [1m[34mSELECT "stylesheets".* FROM "stylesheets" WHERE "stylesheets"."active" = ? ORDER BY "stylesheets"."order" ASC[0m  [["active", 1]]
+  Rendered layouts/_head.html.erb (238.5ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 256ms (Views: 253.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-02-13 23:30:02 -0600
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT p.id, p.created_at, p.title, p.body, IFNULL(c.count,0) AS num_comments, IFNULL(c2.count,0) AS num_ua FROM posts AS p LEFT JOIN (SELECT count(*) AS count, post_id FROM comments WHERE IFNULL(deleted, 0) = 0 AND IFNULL(approval, 0) = 1) AS c ON c.post_id = p.id LEFT JOIN (SELECT count(*) AS count, post_id FROM comments WHERE IFNULL(deleted,0) = 0 AND IFNULL(approval,0) = 0) AS c2 ON c2.post_id = p.id GROUP BY p.id, p.created_at, p.title, p.body ORDER BY p.created_at DESC[0m
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mAdmin Load (0.2ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? ORDER BY "admins"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.erb within layouts/application (3.6ms)
+  [1m[36mStylesheet Load (0.2ms)[0m  [1m[34mSELECT "stylesheets".* FROM "stylesheets" WHERE "stylesheets"."active" = ? ORDER BY "stylesheets"."order" ASC[0m  [["active", 1]]
+  Rendered layouts/_head.html.erb (253.9ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 273ms (Views: 269.8ms | ActiveRecord: 0.7ms)
+
+

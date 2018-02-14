@@ -19,8 +19,14 @@ html {
 }
 
 html, body {
-  overflow-x: hidden;
+	overflow-x: hidden;
 	min-height: 100%;
+	background-color: #C0A4B7;
+}
+
+#body_container {
+	margin: 5px;
+	background-color: #ffffff;
 }
 
 form .edit_post {
@@ -31,4 +37,8 @@ form .edit_post {
 	min-height: 500px;
 }
 
-
+@media (max-width:768px) {
+	#beagle {
+		display: none;
+	}
+}
